@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.VisitorDao">
+    <insert id="addVisitor" parameterType="Visitor">
+        INSERT INTO T_VISITOR(V_ID,V_NAME,V_PASS)
+        VALUES(SEQ_V_ID.NEXTVAL,#{v_name},#{v_pass})
+    </insert>
+    <update id="updateVisitor" parameterType="Visitor">
+        UPDATE T_VISITOR SET V_PASS=#{v_pass} WHERE V_ID=#{v_id}
+    </update>
+    <select id="queryVisitor" parameterType="Visitor" resultType="Visitor">
+        SELECT * FROM T_VISITOR
+         <where>
+             <if test="v_id!=null">
+                V_ID=#{v_id}
+             </if>
+             <if test="v_name!=null">
+                 AND V_NAME=#{v_name}
+             </if>
+             <if test="v_pass!=null">
+                 AND V_PASS=#{v_pass}
+             </if>
+         </where>
+    </select>
+</mapper>
