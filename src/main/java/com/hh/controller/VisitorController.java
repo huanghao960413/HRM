@@ -17,6 +17,7 @@ public class VisitorController {
 
     @RequestMapping("/visitorLogin")
     public String visitorLogin() throws Exception {
+        System.out.println("123456");
         return "visitorLogin";
     }
 
