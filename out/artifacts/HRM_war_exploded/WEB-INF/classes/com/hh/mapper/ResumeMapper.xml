@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.ResumeDao">
+    <insert id="addResume" parameterType="Resume">
+        INSERT INTO T_RESUME VALUES(SEQ_R_ID.NEXTVAL,#{v_id},#{r_name},#{r_sex},#{r_location},#{r_age},#{r_phone},#{r_email},#{r_language},#{r_school},#{r_school_time},#{r_major},#{r_education},#{r_worker},#{r_worker_time},#{r_worker_experience},#{r_job_intention},#{r_certificate},#{r_hobby},#{r_self_assessment},#{r_state})
+    </insert>
+    <update id="updateResume" parameterType="Resume">
+        UPDATE T_RESUME
+        <set>
+            <if test="r_name!=null">
+                R_NAME=#{r_name},
+            </if>
+            <if test="r_sex!=null">
+                R_SEX=#{r_sex},
+            </if>
+            <if test="r_location!=null">
+                R_LOCATION=#{r_location},
+            </if>
+            <if test="r_age!=null">
+                R_AGE=#{r_age},
+            </if>
+            <if test="r_phone!=null">
+                R_PHONE=#{r_phone},
+            </if>
+            <if test="r_email!=null">
+                R_EMAIL=#{r_email},
+            </if>
+            <if test="r_language!=null">
+                R_LANGUAGE=#{r_language},
+            </if>
+            <if test="r_school!=null">
+                R_SCHOOL=#{r_school},
+            </if>
+            <if test="r_school_time!=null">
+                R_SCHOOL_TIME=#{r_school_time},
+            </if>
+            <if test="r_major!=null">
+                R_MAJOR=#{r_major},
+            </if>
+            <if test="r_education!=null">
+                R_EDUCATION=#{r_education},
+            </if>
+            <if test="r_worker!=null">
+                R_WORKER=#{r_worker},
+            </if>
+            <if test="r_worker_time!=null">
+                R_WORKER_TIME=#{r_worker_time},
+            </if>
+            <if test="r_worker_experience!=null">
+                R_WORKER_EXPERIENCE=#{r_worker_experience},
+            </if>
+            <if test="r_job_intention!=null">
+                R_JOB_INTENTION=#{r_job_intention},
+            </if>
+            <if test="r_certificate!=null">
+                R_CERTIFICATE=#{r_certificate},
+            </if>
+            <if test="r_hobby!=null">
+                R_HOBBY=#{r_hobby},
+            </if>
+            <if test="r_self_assessment!=null">
+                R_SELF_ASSESSMENT=#{r_self_assessment},
+            </if>
+            <if test="r_state!=null">
+                R_STATE=#{r_state},
+            </if>
+        </set>
+        where V_ID=#{v_id}
+    </update>
+    <delete id="delResume" parameterType="Resume">
+        DELETE FROM T_RESUME WHERE V_ID=#{v_id} AND R_STATE=0
+    </delete>
+    <select id="queryResume" parameterType="Resume" resultType="Resume">
+        SELECT * FROM T_RESUME
+        <where>
+            <if test="v_id!=null">
+                V_ID=#{v_id}
+            </if>
+        </where>
+    </select>
+</mapper>

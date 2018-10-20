@@ -17,7 +17,6 @@ public class VisitorController {
 
     @RequestMapping("/visitorLogin")
     public String visitorLogin() throws Exception {
-        System.out.println("123456");
         return "visitorLogin";
     }
 
@@ -47,7 +46,7 @@ public class VisitorController {
         Integer result = visitorService.addVisitor(new Visitor(v_name,v_pass));
         if (result == 0) {
             request.setAttribute("msg","注册失败");
-            return "forward:visitorRegister";
+            return "visitorRegister";
         } else {
             return "redirect:../../index";
         }
@@ -66,6 +65,7 @@ public class VisitorController {
 
     @RequestMapping("/visitorIndex")
     public String visitorIndex() throws Exception {
+
         return "visitorIndex";
     }
 

@@ -16,6 +16,6 @@
     <title>游客首页</title>
 </head>
 <body>
- 游客首页
+ <a href="visitorResumeShow">简历</a>
 </body>
 </html>

@@ -107,9 +107,7 @@
         </tr>
         <tr>
             <td></td>
-            <td style="color: red">
-                ${requestScope.msg}
-            </td>
+            <td style="color: red">${requestScope.msg}</td>
         </tr>
         <tr>
             <td></td>

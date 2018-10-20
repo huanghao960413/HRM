@@ -19,7 +19,7 @@
 <form action="visitorLoginDo" method="post">
     <table>
         <tr>
-            <td>账号:</td>
+            <td>用户名:</td>
             <td><input type="text" name="v_name"></td>
         </tr>
         <tr>
@@ -28,9 +28,7 @@
         </tr>
         <tr>
             <td></td>
-            <td style="color: red">
-                ${requestScope.msg}
-            </td>
+            <td style="color: red">${requestScope.msg}</td>
         </tr>
         <tr>
             <td></td>
