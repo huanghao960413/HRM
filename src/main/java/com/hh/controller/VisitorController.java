@@ -63,10 +63,4 @@ public class VisitorController {
         }
     }
 
-    @RequestMapping("/visitorIndex")
-    public String visitorIndex() throws Exception {
-
-        return "visitorIndex";
-    }
-
 }

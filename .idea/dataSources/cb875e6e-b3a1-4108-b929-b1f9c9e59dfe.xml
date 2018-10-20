@@ -6,9 +6,9 @@
     </root>
     <schema id="2" parent="1" name="HRM">
       <ObjectId>50</ObjectId>
-      <IntrospectionTimestamp>2018-10-20.22:56:33</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-21.00:44:06</IntrospectionTimestamp>
       <CreatedTimestamp>2018-10-19.19:21:16</CreatedTimestamp>
-      <ModifiedTimestamp>2018-10-20.22:37:44</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-10-21.00:43:39</ModifiedTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -90,7 +90,7 @@
     <table id="25" parent="2" name="T_RECRUIT_INFORMATION">
       <ObjectId>20373</ObjectId>
       <CreatedTimestamp>2018-10-20.21:47:25</CreatedTimestamp>
-      <ModifiedTimestamp>2018-10-20.22:37:44</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-10-21.00:43:39</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="26" parent="2" name="T_RESUME">
@@ -132,7 +132,7 @@
     </column>
     <column id="33" parent="25" name="RI_NUMBER">
       <Position>6</Position>
-      <DataType>NUMBER(11 digit)|0s</DataType>
+      <DataType>VARCHAR2(255 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="34" parent="25" name="RI_TIME">

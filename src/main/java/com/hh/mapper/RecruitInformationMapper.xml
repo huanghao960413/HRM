@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.RecruitInformationDao">
+    <select id="queryRecruitInformationList" resultType="RecruitInformation">
+        SELECT * FROM T_RECRUIT_INFORMATION
+    </select>
+    <select id="queryRecruitInformationLimit" parameterType="hashmap" resultType="RecruitInformation">
+        SELECT * FROM (
+        SELECT rownum rn,T_RECRUIT_INFORMATION.*
+        FROM T_RECRUIT_INFORMATION
+        WHERE rownum &lt;= #{pageSize}) ri
+        WHERE ri.rn &gt;= #{currentPage}
+    </select>
+</mapper>
