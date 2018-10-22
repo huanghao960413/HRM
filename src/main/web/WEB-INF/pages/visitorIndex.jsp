@@ -2,7 +2,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: 忘我游
-  Date: 2018-10-19
+  Date: 2018-10-21
   Time: 下午 12:28
   To change this template use File | Settings | File Templates.
 --%>
@@ -15,9 +15,23 @@
 <head>
     <base href="<%=basePath%>"/>
     <title>游客首页</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function add() {
+            if (!confirm("确认要投递吗？")) {
+                window.event.returnValue = false;
+            }
+        }
+    </script>
 </head>
 <body>
+<a href="visitorIndex">首页</a>
 <a href="visitorResumeShow">简历</a>
+<a href="visitorRecruitFlowShow">已投递</a>
 <hr/>
 <c:if test="${requestScope.informationList != null}">
     <c:forEach items="${requestScope.informationList}" var="i">
@@ -26,14 +40,16 @@
                 <tr>
                     <td>${i.ri_worker}</td>
                     <td></td>
-                    <td style="color: red">${i.ri_salary}</td>
-                    <td>${i.ri_time}</td>
+                    <td>${i.ri_experience}</td>
+                    <td></td>
+                    <td style="text-align: right">${i.ri_time}</td>
                 </tr>
                 <tr>
+                    <td style="color: red">${i.ri_salary}</td>
                     <td>${i.ri_education}</td>
-                    <td>${i.ri_experience}</td>
-                    <td>${i.ri_number}</td>
-                    <td><a href="${i.ri_id}" onclick="return add()">投递</a></td>
+                    <td></td>
+                    <td>${i.ri_number}人</td>
+                    <td style="text-align: right"><a href="visitorRecruitFlowAdd?ri_id=${i.ri_id}" onclick="return add()">投递</a></td>
                 </tr>
             </table>
         </div>

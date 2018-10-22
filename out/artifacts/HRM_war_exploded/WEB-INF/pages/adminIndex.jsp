@@ -14,24 +14,10 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
-    <title>游客首页</title>
-    <style>
-        a {
-            text-decoration: none;
-        }
-    </style>
-    <script>
-        function add() {
-            if (!confirm("确认要投递吗？")) {
-                window.event.returnValue = false;
-            }
-        }
-    </script>
+    <title>管理员首页</title>
 </head>
 <body>
-<a href="visitorIndex">首页</a>
-<a href="visitorResumeShow">简历</a>
-<a href="visitorRecruitFlowShow">已投递</a>
+<a href="">招聘信息管理</a>
 <hr/>
 <c:if test="${requestScope.informationList != null}">
     <c:forEach items="${requestScope.informationList}" var="i">
@@ -49,7 +35,7 @@
                     <td>${i.ri_education}</td>
                     <td></td>
                     <td>${i.ri_number}人</td>
-                    <td style="text-align: right"><a href="visitorRecruitFlowAdd?ri_id=${i.ri_id}" onclick="return add()">投递</a></td>
+                    <td style="text-align: right"><a href="adminRecruitFlowShow?ri_id=${i.ri_id}" onclick="return add()">查看投递</a></td>
                 </tr>
             </table>
         </div>
@@ -58,17 +44,17 @@
 <c:if test="${requestScope.totalPages > 0}">
     <table>
         <tr>
-            <td><a href="visitorIndex?currentPage=1">首页</a></td>
+            <td><a href="adminIndex?currentPage=1">首页</a></td>
             <c:if test="${requestScope.currentPage != 1}">
-                <td><a href="visitorIndex?currentPage=${requestScope.currentPage - 1}"><</a></td>
+                <td><a href="adminIndex?currentPage=${requestScope.currentPage - 1}"><</a></td>
             </c:if>
             <c:forEach var="i" begin="1" end="${requestScope.totalPages}">
-                <td><a href="visitorIndex?currentPage=${i}">${i}</a></td>
+                <td><a href="adminIndex?currentPage=${i}">${i}</a></td>
             </c:forEach>
             <c:if test="${requestScope.currentPage != requestScope.totalPages}">
-                <td><a href="visitorIndex?currentPage=${requestScope.currentPage + 1}">></a></td>
+                <td><a href="adminIndex?currentPage=${requestScope.currentPage + 1}">></a></td>
             </c:if>
-            <td><a href="visitorIndex?currentPage=${requestScope.totalPages}">尾页</a></td>
+            <td><a href="adminIndex?currentPage=${requestScope.totalPages}">尾页</a></td>
         </tr>
     </table>
 </c:if>

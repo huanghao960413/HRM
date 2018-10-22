@@ -68,7 +68,7 @@
         where V_ID=#{v_id}
     </update>
     <delete id="delResume" parameterType="Resume">
-        DELETE FROM T_RESUME WHERE V_ID=#{v_id} AND R_STATE=0
+        DELETE FROM T_RESUME WHERE V_ID=#{v_id}
     </delete>
     <select id="queryResume" parameterType="Resume" resultType="Resume">
         SELECT * FROM T_RESUME

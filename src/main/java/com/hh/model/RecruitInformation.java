@@ -14,6 +14,10 @@ public class RecruitInformation implements Serializable {
     public RecruitInformation() {
     }
 
+    public RecruitInformation(Integer ri_id) {
+        this.ri_id = ri_id;
+    }
+
     public Integer getRi_id() {
         return ri_id;
     }

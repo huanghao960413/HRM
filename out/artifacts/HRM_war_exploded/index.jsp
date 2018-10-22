@@ -18,5 +18,7 @@
 <body>
 <a href="visitorLogin">游客登录</a>
 <a href="visitorRegister">游客注册</a>
+<hr/>
+<a href="adminLogin">管理员登录</a>
 </body>
 </html>

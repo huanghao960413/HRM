@@ -27,7 +27,6 @@ public class VisitorResumeController {
             return "redirect:visitorResumeAdd";
         } else {
             request.setAttribute("resume", resume);
-            System.out.println();
             return "visitorResumeShow";
         }
     }
