@@ -28,6 +28,10 @@
     <table>
         <tr><hr/></tr>
         <tr>
+            <td>简历标题:</td>
+            <td><input type="text" name="r_title"></td>
+        </tr>
+        <tr>
             <td>基本信息</td>
             <td></td>
         </tr>
@@ -54,10 +58,6 @@
         <tr>
             <td>*Email:</td>
             <td><input type="text" name="r_email"></td>
-        </tr>
-        <tr>
-            <td>常用语:</td>
-            <td><input type="text" name="r_language"></td>
         </tr>
         <tr><td><hr/></td></tr>
         <tr>

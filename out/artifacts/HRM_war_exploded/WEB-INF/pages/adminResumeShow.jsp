@@ -18,121 +18,93 @@
 <body>
 <a href="adminIndex">首页</a>
 <hr/>
-<table>
-    <tr>
-        <hr/>
-    </tr>
+<span>简历标题:${requestScope.resume.r_title}</span>
+<table border="1" cellspacing="0">
     <tr>
         <td>基本信息</td>
-        <td></td>
+        <td colspan="5"><hr/></td>
     </tr>
     <tr>
         <td>*姓名:</td>
         <td>${requestScope.resume.r_name}</td>
-    </tr>
-    <tr>
         <td>*性别:</td>
         <td>${requestScope.resume.r_sex}</td>
-    </tr>
-    <tr>
-        <td>*所在地:</td>
-        <td>${requestScope.resume.r_location}</td>
-    </tr>
-    <tr>
         <td>*年龄:</td>
         <td>${requestScope.resume.r_age}</td>
     </tr>
     <tr>
+        <td>*所在地:</td>
+        <td colspan="5">${requestScope.resume.r_location}</td>
+    </tr>
+    <tr>
         <td>*联系方式:</td>
-        <td>${requestScope.resume.r_phone}</td>
+        <td colspan="5">${requestScope.resume.r_phone}</td>
     </tr>
     <tr>
         <td>*Email:</td>
-        <td>${requestScope.resume.r_email}</td>
-    </tr>
-    <tr>
-        <td>常用语:</td>
-        <td>${requestScope.resume.r_language}</td>
-    </tr>
-    <tr>
-        <td>
-            <hr/>
-        </td>
+        <td colspan="5">${requestScope.resume.r_email}</td>
     </tr>
     <tr>
         <td>教育背景</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>时间:</td>
-        <td>${requestScope.resume.r_school_time}</td>
+        <td colspan="5">
+            <hr/>
+        </td>
     </tr>
     <tr>
         <td>毕业院校:</td>
         <td>${requestScope.resume.r_school}</td>
-    </tr>
-    <tr>
         <td>专业:</td>
         <td>${requestScope.resume.r_major}</td>
-    </tr>
-    <tr>
         <td>学历:</td>
         <td>${requestScope.resume.r_education}</td>
     </tr>
     <tr>
-        <td>
+        <td>时间:</td>
+        <td colspan="5">${requestScope.resume.r_school_time}</td>
+    </tr>
+    <tr>
+        <td>工作经验</td>
+        <td colspan="5">
             <hr/>
         </td>
     </tr>
     <tr>
-        <td>工作经验</td>
-        <td></td>
-    </tr>
-    <tr>
         <td>时间:</td>
-        <td>${requestScope.resume.r_worker_time}</td>
+        <td colspan="5">${requestScope.resume.r_worker_time}</td>
     </tr>
     <tr>
         <td>职位:</td>
         <td>${requestScope.resume.r_worker}</td>
-    </tr>
-    <tr>
         <td>职责:</td>
-        <td>${requestScope.resume.r_worker_experience}</td>
-    </tr>
-    <tr>
-        <td>
-            <hr/>
-        </td>
+        <td colspan="3">${requestScope.resume.r_worker_experience}</td>
     </tr>
     <tr>
         <td>求职意向</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>职位:</td>
-        <td>${requestScope.resume.r_job_intention}</td>
-    </tr>
-    <tr>
-        <td>
+        <td colspan="5">
             <hr/>
         </td>
     </tr>
     <tr>
+        <td>职位:</td>
+        <td colspan="5">${requestScope.resume.r_job_intention}</td>
+    </tr>
+    <tr>
         <td>其他</td>
-        <td></td>
+        <td colspan="5">
+            <hr/>
+        </td>
     </tr>
     <tr>
         <td>奖项:</td>
-        <td>${requestScope.resume.r_certificate}</td>
+        <td colspan="5">${requestScope.resume.r_certificate}</td>
     </tr>
     <tr>
         <td>爱好:</td>
-        <td>${requestScope.resume.r_hobby}</td>
+        <td colspan="5">${requestScope.resume.r_hobby}</td>
     </tr>
     <tr>
         <td>自我评价:</td>
-        <td>${requestScope.resume.r_self_assessment}</td>
+        <td colspan="5">${requestScope.resume.r_self_assessment}</td>
     </tr>
 </table>
 </body>

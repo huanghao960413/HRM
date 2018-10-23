@@ -31,7 +31,7 @@
                     <td style="text-align: right">${f.rf_consult==0?"未阅":"已阅"}</td>
                 </tr>
                 <tr>
-                    <td><a href="adminResumeShow?v_id=${f.v_id}">查看简历</a></td>
+                    <td><a href="adminResumeShow?rf_id=${f.rf_id}">查看简历</a></td>
                     <td></td>
                     <td></td>
                     <td></td>

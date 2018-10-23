@@ -2,6 +2,8 @@ package com.hh.service;
 
 import com.hh.model.Resume;
 
+import java.util.List;
+
 public interface ResumeService {
 
     Integer addResume(Resume resume);
@@ -11,5 +13,7 @@ public interface ResumeService {
     Integer updateResume(Resume resume);
 
     Resume queryResume(Resume resume);
+
+    List<Resume> queryResumeList(Resume resume);
 
 }

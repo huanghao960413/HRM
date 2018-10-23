@@ -21,6 +21,11 @@
     <table>
         <tr><hr/></tr>
         <tr>
+            <td>简历标题:</td>
+            <td><input type="text" name="r_title" value="${requestScope.resume.r_title}"></td>
+        </tr>
+        <tr><hr/></tr>
+        <tr>
             <td>基本信息</td>
             <td>
                 <input type="hidden" name="r_id" value="${requestScope.resume.r_id}">
@@ -51,10 +56,6 @@
         <tr>
             <td>*Email:</td>
             <td><input type="text" name="r_email" value="${requestScope.resume.r_email}"></td>
-        </tr>
-        <tr>
-            <td>常用语:</td>
-            <td><input type="text" name="r_language" value="${requestScope.resume.r_language}"></td>
         </tr>
         <tr><td><hr/></td></tr>
         <tr>

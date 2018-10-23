@@ -6,6 +6,7 @@ public class RecruitFlow implements Serializable {
     private Integer rf_id;
     private Integer ri_id;
     private Integer v_id;
+    private Integer r_id;
     private Integer rf_consult;
     private String rf_time;;
     private Integer s_id;
@@ -18,9 +19,10 @@ public class RecruitFlow implements Serializable {
         this.v_id = v_id;
     }
 
-    public RecruitFlow(Integer ri_id, Integer v_id) {
+    public RecruitFlow(Integer ri_id, Integer v_id, Integer r_id) {
         this.ri_id = ri_id;
         this.v_id = v_id;
+        this.r_id = r_id;
     }
 
     public Integer getRf_id() {
@@ -45,6 +47,14 @@ public class RecruitFlow implements Serializable {
 
     public void setV_id(Integer v_id) {
         this.v_id = v_id;
+    }
+
+    public Integer getR_id() {
+        return r_id;
+    }
+
+    public void setR_id(Integer r_id) {
+        this.r_id = r_id;
     }
 
     public Integer getRf_consult() {

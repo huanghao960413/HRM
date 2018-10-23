@@ -30,7 +30,7 @@
 </head>
 <body>
 <a href="visitorIndex">首页</a>
-<a href="visitorResumeShow">简历</a>
+<a href="visitorResumeShowByVid">简历</a>
 <a href="visitorRecruitFlowShow">已投递</a>
 <hr/>
 <c:if test="${requestScope.informationList != null}">
@@ -49,7 +49,7 @@
                     <td>${i.ri_education}</td>
                     <td></td>
                     <td>${i.ri_number}人</td>
-                    <td style="text-align: right"><a href="visitorRecruitFlowAdd?ri_id=${i.ri_id}" onclick="return add()">投递</a></td>
+                    <td style="text-align: right"><a href="visitorRecruitFlowAdd?ri_id=${i.ri_id}">投递</a></td>
                 </tr>
             </table>
         </div>

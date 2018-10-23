@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Resume implements Serializable {
     private Integer r_id;
     private Integer v_id;
+    private String r_title;
     private String r_name;
     private String r_sex;
     private String r_location;
     private String r_age;
     private String r_phone;
     private String r_email;
-    private String r_language;
     private String r_school;
     private String r_school_time;
     private String r_major;
@@ -51,6 +51,14 @@ public class Resume implements Serializable {
 
     public void setV_id(Integer v_id) {
         this.v_id = v_id;
+    }
+
+    public String getR_title() {
+        return r_title;
+    }
+
+    public void setR_title(String r_title) {
+        this.r_title = r_title;
     }
 
     public String getR_name() {
@@ -99,14 +107,6 @@ public class Resume implements Serializable {
 
     public void setR_email(String r_email) {
         this.r_email = r_email;
-    }
-
-    public String getR_language() {
-        return r_language;
-    }
-
-    public void setR_language(String r_language) {
-        this.r_language = r_language;
     }
 
     public String getR_school() {
@@ -210,13 +210,13 @@ public class Resume implements Serializable {
         return "Resume{" +
                 "r_id=" + r_id +
                 ", v_id=" + v_id +
+                ", r_title='" + r_title + '\'' +
                 ", r_name='" + r_name + '\'' +
                 ", r_sex='" + r_sex + '\'' +
                 ", r_location='" + r_location + '\'' +
                 ", r_age='" + r_age + '\'' +
                 ", r_phone='" + r_phone + '\'' +
                 ", r_email='" + r_email + '\'' +
-                ", r_language='" + r_language + '\'' +
                 ", r_school='" + r_school + '\'' +
                 ", r_school_time='" + r_school_time + '\'' +
                 ", r_major='" + r_major + '\'' +

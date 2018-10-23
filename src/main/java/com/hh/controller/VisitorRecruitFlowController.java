@@ -2,9 +2,11 @@ package com.hh.controller;
 
 import com.hh.model.RecruitFlow;
 import com.hh.model.RecruitInformation;
+import com.hh.model.Resume;
 import com.hh.model.Visitor;
 import com.hh.service.RecruitFlowService;
 import com.hh.service.RecruitInformationService;
+import com.hh.service.ResumeService;
 import com.hh.util.PageDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class VisitorRecruitFlowController {
     private RecruitFlowService recruitFlowService;
     @Autowired
     private RecruitInformationService recruitInformationService;
+    @Autowired
+    private ResumeService resumeService;
     private final int PAGESIZE = 2;
 
     @RequestMapping("/visitorRecruitFlowShow")
@@ -58,13 +62,27 @@ public class VisitorRecruitFlowController {
         if (visitor == null) {
             return "redirect:visitorLogin";
         }
+        List<Resume> resumeList = resumeService.queryResumeList(new Resume(visitor.getV_id()));
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
-        recruitFlowService.addRecruitFlow(new RecruitFlow(ri_id,visitor.getV_id()));
+        request.setAttribute("ri_id", ri_id);
+        request.setAttribute("resumeList", resumeList);
+        return "visitorRecruitFlowAdd";
+    }
+
+    @RequestMapping("/visitorRecruitFlowAddDo")
+    public String visitorRecruitFlowAddDo(HttpServletRequest request, HttpSession session) throws Exception {
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
+        if (visitor == null) {
+            return "redirect:visitorLogin";
+        }
+        Integer r_id = Integer.parseInt(request.getParameter("r_id"));
+        Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
+        recruitFlowService.addRecruitFlow(new RecruitFlow(ri_id, visitor.getV_id(), r_id));
         return "redirect:visitorIndex";
     }
 
     @RequestMapping("/visitorRecruitFlowDel")
-    public String visitorRecruitFlowDel(HttpServletRequest request,HttpSession session) throws Exception {
+    public String visitorRecruitFlowDel(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
             return "redirect:visitorLogin";

@@ -6,6 +6,8 @@ import com.hh.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ResumeServiceImpl implements ResumeService {
     @Autowired
@@ -15,7 +17,8 @@ public class ResumeServiceImpl implements ResumeService {
         if (resume == null) {
             return 0;
         }
-        if (resume.getV_id().equals("") ||
+        if (resume.getV_id() == null ||
+                resume.getR_title().equals("") ||
                 resume.getR_name().equals("") ||
                 resume.getR_sex().equals("") ||
                 resume.getR_location().equals("") ||
@@ -31,10 +34,9 @@ public class ResumeServiceImpl implements ResumeService {
         if (resume == null) {
             return 0;
         }
-        if (resume.getV_id() == null) {
+        if (resume.getR_id() == null) {
             return 0;
         }
-        System.out.println(resume.getV_id());
         return resumeDao.delResume(resume);
     }
 
@@ -42,7 +44,8 @@ public class ResumeServiceImpl implements ResumeService {
         if (resume == null) {
             return 0;
         }
-        if (resume.getV_id().equals("") ||
+        if (resume.getR_id() == null ||
+                resume.getR_title().equals("") ||
                 resume.getR_name().equals("") ||
                 resume.getR_sex().equals("") ||
                 resume.getR_location().equals("") ||
@@ -59,6 +62,13 @@ public class ResumeServiceImpl implements ResumeService {
             return null;
         }
         return resumeDao.queryResume(resume);
+    }
+
+    public List<Resume> queryResumeList(Resume resume) {
+        if (resume == null) {
+            return null;
+        }
+        return resumeDao.queryResumeList(resume);
     }
 
 }

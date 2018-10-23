@@ -2,11 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hh.dao.ResumeDao">
     <insert id="addResume" parameterType="Resume">
-        INSERT INTO T_RESUME VALUES(SEQ_R_ID.NEXTVAL,#{v_id},#{r_name},#{r_sex},#{r_location},#{r_age},#{r_phone},#{r_email},#{r_language},#{r_school},#{r_school_time},#{r_major},#{r_education},#{r_worker},#{r_worker_time},#{r_worker_experience},#{r_job_intention},#{r_certificate},#{r_hobby},#{r_self_assessment},#{r_state})
+        INSERT INTO T_RESUME VALUES(SEQ_R_ID.NEXTVAL,#{v_id},#{r_title},#{r_name},#{r_sex},#{r_location},#{r_age},#{r_phone},#{r_email},#{r_school},#{r_school_time},#{r_major},#{r_education},#{r_worker},#{r_worker_time},#{r_worker_experience},#{r_job_intention},#{r_certificate},#{r_hobby},#{r_self_assessment},#{r_state})
     </insert>
     <update id="updateResume" parameterType="Resume">
         UPDATE T_RESUME
         <set>
+            <if test="r_title!=null">
+                R_TITLE=#{r_title},
+            </if>
             <if test="r_name!=null">
                 R_NAME=#{r_name},
             </if>
@@ -24,9 +27,6 @@
             </if>
             <if test="r_email!=null">
                 R_EMAIL=#{r_email},
-            </if>
-            <if test="r_language!=null">
-                R_LANGUAGE=#{r_language},
             </if>
             <if test="r_school!=null">
                 R_SCHOOL=#{r_school},
@@ -65,16 +65,24 @@
                 R_STATE=#{r_state},
             </if>
         </set>
-        where V_ID=#{v_id}
+        where R_ID=#{r_id}
     </update>
     <delete id="delResume" parameterType="Resume">
-        DELETE FROM T_RESUME WHERE V_ID=#{v_id}
+        DELETE FROM T_RESUME WHERE R_ID=#{r_id}
     </delete>
     <select id="queryResume" parameterType="Resume" resultType="Resume">
         SELECT * FROM T_RESUME
         <where>
+            <if test="r_id!=null">
+                R_ID=#{r_id}
+            </if>
+        </where>
+    </select>
+    <select id="queryResumeList" parameterType="Resume" resultType="Resume">
+        SELECT * FROM T_RESUME
+        <where>
             <if test="v_id!=null">
-                V_ID=#{v_id}
+                AND V_ID=#{v_id}
             </if>
         </where>
     </select>

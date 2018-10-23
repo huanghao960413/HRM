@@ -19,14 +19,18 @@ public class AdminResumeController {
     private RecruitFlowService recruitFlowService;
 
     @RequestMapping("/adminResumeShow")
-    public String adminResumeShow(HttpServletRequest request, HttpSession session) throws Exception {
-        Integer v_id = Integer.parseInt(request.getParameter("v_id"));
-        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(v_id));
+    public String adminResumeShow(HttpServletRequest request) throws Exception {
+        Integer rf_id = Integer.parseInt(request.getParameter("rf_id"));
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRf_id(rf_id);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
         if (recruitFlow.getRf_consult() == 0) {
             recruitFlow.setRf_consult(1);
             recruitFlowService.updateRecruitFlow(recruitFlow);
         }
-        Resume resume = resumeService.queryResume(new Resume(v_id));
+        Resume queryResume = new Resume();
+        queryResume.setR_id(recruitFlow.getR_id());
+        Resume resume = resumeService.queryResume(queryResume);
         request.setAttribute("resume", resume);
         return "adminResumeShow";
     }
