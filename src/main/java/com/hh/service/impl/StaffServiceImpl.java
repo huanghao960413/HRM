@@ -15,7 +15,11 @@ public class StaffServiceImpl implements StaffService {
     private StaffDao staffDao;
 
     public Integer addStaff(Staff staff) {
-        return null;
+        if (staff == null) {
+            return null;
+        }
+        System.out.println(staff);
+        return staffDao.addStaff(staff);
     }
 
     public Integer delStaff(Staff staff) {

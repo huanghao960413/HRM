@@ -36,16 +36,23 @@
                     <td></td>
                     <td></td>
                     <td style="text-align: right">
-                        <c:if test="${f.rf_state==0}">
-                            <a href="adminRecruitFlowInterview?rf_id=${f.rf_id}">邀请面试</a>/
-                            <a href="adminRecruitFlowEliminate?rf_id=${f.rf_id}">淘汰</a>
-                        </c:if>
-                        <c:if test="${f.rf_state==1}">
-                            <a href="?rf_id=${f.rf_id}">录用</a>/
+                        <c:if test="${f.rf_state>-1 && f.rf_state<3}">
+                            <c:if test="${f.rf_state==0}">
+                                <a href="adminRecruitFlowInterview?rf_id=${f.rf_id}">邀请面试</a>/
+                            </c:if>
+                            <c:if test="${f.rf_state==1}">
+                                <a>等待面试</a>/
+                            </c:if>
+                            <c:if test="${f.rf_state==2}">
+                                <a href="adminRecruitFlowEmploy?rf_id=${f.rf_id}">录用</a>/
+                            </c:if>
                             <a href="adminRecruitFlowEliminate?rf_id=${f.rf_id}">淘汰</a>
                         </c:if>
                         <c:if test="${f.rf_state==-1}">
                             <a style="color: red">已淘汰</a>
+                        </c:if>
+                        <c:if test="${f.rf_state==3}">
+                            <a style="color: lawngreen">已录用</a>
                         </c:if>
                     </td>
                 </tr>

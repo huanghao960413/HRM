@@ -28,6 +28,7 @@ public class VisitorRecruitFlowController {
     private ResumeService resumeService;
     private final int PAGESIZE = 2;
 
+    //根据游客id查看投递信息
     @RequestMapping("/visitorRecruitFlowShow")
     public String visitorRecruitFlowShow(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
@@ -56,6 +57,7 @@ public class VisitorRecruitFlowController {
         return "visitorRecruitFlowShow";
     }
 
+    //进入投递页面
     @RequestMapping("/visitorRecruitFlowAdd")
     public String visitorRecruitFlowAdd(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
@@ -69,6 +71,7 @@ public class VisitorRecruitFlowController {
         return "visitorRecruitFlowAdd";
     }
 
+    //投递简历
     @RequestMapping("/visitorRecruitFlowAddDo")
     public String visitorRecruitFlowAddDo(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
@@ -81,6 +84,7 @@ public class VisitorRecruitFlowController {
         return "redirect:visitorIndex";
     }
 
+    //根据投递id删除投递信息(未确定使用)
     @RequestMapping("/visitorRecruitFlowDel")
     public String visitorRecruitFlowDel(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
@@ -91,6 +95,22 @@ public class VisitorRecruitFlowController {
         RecruitFlow recruitFlow = new RecruitFlow();
         recruitFlow.setRf_id(rf_id);
         recruitFlowService.delRecruitFlow(recruitFlow);
+        return "redirect:visitorIndex";
+    }
+
+    //根据投递id确认面试
+    @RequestMapping("/visitorRecruitFlowInterview")
+    public String visitorRecruitFlowInterview(HttpServletRequest request, HttpSession session) throws Exception {
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
+        if (visitor == null) {
+            return "redirect:visitorLogin";
+        }
+        Integer rf_id = Integer.parseInt(request.getParameter("rf_id"));
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRf_id(rf_id);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        recruitFlow.setRf_state(2);
+        recruitFlowService.updateRecruitFlow(recruitFlow);
         return "redirect:visitorIndex";
     }
 

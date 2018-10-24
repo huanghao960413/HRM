@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hh.dao.StaffDao">
-    <insert id="addStaff"></insert>
+    <insert id="addStaff">
+        INSERT INTO T_STAFF
+        VALUES(SEQ_S_ID.NEXTVAL,#{s_name},#{s_pass},#{s_full_name},#{s_sex},#{s_age},#{s_phone},#{s_email},#{d_id},#{p_id},0)
+    </insert>
     <update id="updateStaff"></update>
     <delete id="delStaff"></delete>
     <select id="queryStaff" resultType="Staff">

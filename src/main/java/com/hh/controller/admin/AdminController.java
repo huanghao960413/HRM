@@ -9,11 +9,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class AdminController {
 
+    //进入管理员登录页面
     @RequestMapping("/adminLogin")
     public String adminLogin() throws Exception {
         return "adminLogin";
     }
 
+    //管理员登陆(账号写死为admin)
     @RequestMapping("/adminLoginDo")
     public String adminLoginDo(HttpServletRequest request, HttpSession session) throws Exception {
         String a_name = request.getParameter("a_name");

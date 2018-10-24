@@ -1,10 +1,10 @@
 package com.hh.controller.admin;
 
-import com.hh.model.RecruitFlow;
-import com.hh.model.RecruitInformation;
-import com.hh.model.Visitor;
+import com.hh.model.*;
 import com.hh.service.RecruitFlowService;
 import com.hh.service.RecruitInformationService;
+import com.hh.service.ResumeService;
+import com.hh.service.StaffService;
 import com.hh.util.PageDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +23,13 @@ public class AdminRecruitFlowController {
     private RecruitFlowService recruitFlowService;
     @Autowired
     private RecruitInformationService recruitInformationService;
+    @Autowired
+    private ResumeService resumeService;
+    @Autowired
+    private StaffService staffService;
     private final int PAGESIZE = 2;
 
+    //根据招聘id查找投递信息
     @RequestMapping("/adminRecruitFlowShow")
     public String adminRecruitFlowShow(HttpServletRequest request) throws Exception {
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
@@ -52,12 +57,26 @@ public class AdminRecruitFlowController {
         return "adminRecruitFlowShow";
     }
 
+    //根据投递id淘汰投递信息
+    @RequestMapping("/adminRecruitFlowEliminate")
+    public String adminRecruitFlowEliminate(HttpServletRequest request) throws Exception {
+        Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRf_id(rf_id);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        recruitFlow.setRf_state(-1);
+        recruitFlowService.updateRecruitFlow(recruitFlow);
+        return "redirect:adminIndex";
+    }
+
+    //进入面试邀请页面
     @RequestMapping("/adminRecruitFlowInterview")
     public String adminRecruitFlowInterview(HttpServletRequest request) throws Exception {
         request.setAttribute("rf_id", request.getParameter("rf_id"));
         return "adminRecruitFlowInterview";
     }
 
+    //根据投递id邀请面试
     @RequestMapping("/adminRecruitFlowInterviewDo")
     public String adminRecruitFlowInterviewDo(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
@@ -74,19 +93,43 @@ public class AdminRecruitFlowController {
         recruitFlow.setRf_time(rf_time);
         recruitFlow.setRf_state(1);
         if (recruitFlowService.updateRecruitFlow(recruitFlow) < 1) {
-            request.setAttribute("msg", "修改失败");
+            request.setAttribute("msg", "操作失败");
             return "adminRecruitFlowInterview";
         }
         return "redirect:adminIndex";
     }
 
-    @RequestMapping("/adminRecruitFlowEliminate")
-    public String adminRecruitFlowEliminate(HttpServletRequest request) throws Exception {
+    //进入录取页面
+    @RequestMapping("/adminRecruitFlowEmploy")
+    public String adminRecruitFlowEmploy(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
         RecruitFlow queryRecruitFlow = new RecruitFlow();
         queryRecruitFlow.setRf_id(rf_id);
         RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
-        recruitFlow.setRf_state(-1);
+        if (recruitFlow == null) {
+            request.setAttribute("msg", "没有此投递");
+            return "adminRecruitFlowInterview";
+        }
+        Resume queryResume = new Resume();
+        queryResume.setR_id(recruitFlow.getR_id());
+        Resume resume = resumeService.queryResume(queryResume);
+        request.setAttribute("resume", resume);
+        request.setAttribute("rf_id", rf_id);
+        return "adminRecruitFlowEmploy";
+    }
+
+    //根据投递id录取员工
+    @RequestMapping("/adminRecruitFlowEmployDo")
+    public String adminRecruitFlowEmployDo(Staff staff, HttpServletRequest request) throws Exception {
+        if (staffService.addStaff(staff) < 1) {
+            request.setAttribute("msg", "操作失败");
+            return "adminRecruitFlowEmploy";
+        }
+        Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRf_id(rf_id);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        recruitFlow.setRf_state(3);
         recruitFlowService.updateRecruitFlow(recruitFlow);
         return "redirect:adminIndex";
     }

@@ -14,11 +14,13 @@ public class VisitorController {
     @Autowired
     private VisitorService visitorService;
 
+    //进入登录界面
     @RequestMapping("/visitorLogin")
     public String visitorLogin() throws Exception {
         return "visitorLogin";
     }
 
+    //登录
     @RequestMapping("/visitorLoginDo")
     public String visitorLoginDo(HttpServletRequest request, HttpSession session) throws Exception {
         String v_name = request.getParameter("v_name");
@@ -33,11 +35,13 @@ public class VisitorController {
         }
     }
 
+    //进入注册界面
     @RequestMapping("/visitorRegister")
     public String visitorRegister() throws Exception {
         return "visitorRegister";
     }
 
+    //注册
     @RequestMapping("/visitorRegisterDo")
     public String visitorRegisterDo(HttpServletRequest request) throws Exception {
         String v_name = request.getParameter("v_name");

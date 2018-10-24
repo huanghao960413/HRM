@@ -17,6 +17,7 @@ public class AdminRecruitInformationController {
     private RecruitInformationService recruitInformationService;
     private final int PAGESIZE = 2;
 
+    //管理员首页(显示招聘信息)
     @RequestMapping("/adminIndex")
     public String adminIndex(HttpServletRequest request) {
         HashMap<String, Object> hashMap = new HashMap<String, Object>();

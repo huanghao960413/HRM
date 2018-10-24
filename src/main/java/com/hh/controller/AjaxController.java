@@ -28,6 +28,7 @@ public class AjaxController {
     @Autowired
     private StaffService staffService;
 
+    //判断用户名是否存在
     @RequestMapping("/ajaxVisitorByName")
     public void ajaxVisitorByName(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String v_name = request.getParameter("v_name");
@@ -39,12 +40,14 @@ public class AjaxController {
         }
     }
 
+    //查找部门
     @RequestMapping("/ajaxDepartment")
     public @ResponseBody List ajaxDepartment() throws Exception {
         List<Department> departmentList = departmentService.queryDepartmentList(new Department());
         return departmentList;
     }
 
+    //根据部门id查找职位
     @RequestMapping("/ajaxPosition")
     public @ResponseBody List ajaxPosition(HttpServletRequest request) throws Exception {
         Integer d_id = Integer.valueOf(request.getParameter("d_id"));
@@ -54,6 +57,7 @@ public class AjaxController {
         return positionList;
     }
 
+    //根据职位id查找员工
     @RequestMapping("/ajaxStaff")
     public @ResponseBody List ajaxStaff(HttpServletRequest request) throws Exception {
         Integer p_id = Integer.valueOf(request.getParameter("p_id"));

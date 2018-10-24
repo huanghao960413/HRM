@@ -117,4 +117,21 @@ public class Staff implements Serializable {
     public void setS_state(Integer s_state) {
         this.s_state = s_state;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "s_id=" + s_id +
+                ", s_name='" + s_name + '\'' +
+                ", s_pass='" + s_pass + '\'' +
+                ", s_full_name='" + s_full_name + '\'' +
+                ", s_sex='" + s_sex + '\'' +
+                ", s_age='" + s_age + '\'' +
+                ", s_phone='" + s_phone + '\'' +
+                ", s_email='" + s_email + '\'' +
+                ", d_id=" + d_id +
+                ", p_id=" + p_id +
+                ", s_state=" + s_state +
+                '}';
+    }
 }

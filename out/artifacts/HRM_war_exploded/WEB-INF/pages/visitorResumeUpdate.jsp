@@ -33,6 +33,7 @@
                 <input type="hidden" name="r_state" value="${requestScope.resume.r_state}">
             </td>
         </tr>
+        <tr><hr/></tr>
         <tr>
             <td>*姓名:</td>
             <td><input type="text" name="r_name" value="${requestScope.resume.r_name}"></td>

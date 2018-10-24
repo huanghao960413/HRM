@@ -19,6 +19,7 @@ public class VisitorRecruitInformationController {
     private RecruitInformationService recruitInformationService;
     private final int PAGESIZE = 2;
 
+    //游客主页(显示招聘信息)
     @RequestMapping("/visitorIndex")
     public String visitorIndex(HttpServletRequest request, HttpSession session) {
         Visitor visitor = (Visitor) session.getAttribute("visitor");

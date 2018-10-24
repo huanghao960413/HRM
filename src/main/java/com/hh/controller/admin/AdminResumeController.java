@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class AdminResumeController {
@@ -18,6 +17,7 @@ public class AdminResumeController {
     @Autowired
     private RecruitFlowService recruitFlowService;
 
+    //根据投递id查找简历
     @RequestMapping("/adminResumeShow")
     public String adminResumeShow(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.parseInt(request.getParameter("rf_id"));

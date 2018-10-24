@@ -31,8 +31,8 @@
                     <td style="text-align: right">${f.rf_consult==0?"未阅":"已阅"}</td>
                 </tr>
                 <tr>
-                    <c:if test="${f.rf_state==1}">
-                        <td>应聘失败</td>
+                    <c:if test="${f.rf_state==-1}">
+                        <td>已淘汰</td>
                     </c:if>
                     <c:if test="${f.rf_state==0}">
                         <td>等待邀请</td>
@@ -46,7 +46,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td style="text-align: right"><a href="visitorRecruitFlowDel?rf_id=${f.rf_id}">取消</a></td>
+                    <td style="text-align: right">
+                        <c:if test="${f.rf_state==1}">
+                            <a href="visitorRecruitFlowInterview?rf_id=${f.rf_id}">确认面试</a>
+                        </c:if>
+                        <%--<a href="visitorRecruitFlowDel?rf_id=${f.rf_id}">取消</a>--%>
+                    </td>
                 </tr>
             </table>
         </div>
