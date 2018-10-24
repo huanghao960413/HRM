@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.DepartmentDao">
+    <insert id="addDepartment"></insert>
+    <update id="updateDepartment"></update>
+    <delete id="delDepartment"></delete>
+    <select id="queryDepartment" resultType="Department">
+        SELECT * FROM T_DEPARTMENT WHERE D_ID=#{d_id}
+    </select>
+    <select id="queryDepartmentList" resultType="Department">
+        SELECT * FROM T_DEPARTMENT
+    </select>
+    <select id="queryDepartmentLimit" resultType="Department"></select>
+</mapper>

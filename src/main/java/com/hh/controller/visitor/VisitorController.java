@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.hh.controller.visitor;
 
 import com.hh.model.Visitor;
 import com.hh.service.VisitorService;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -49,17 +48,6 @@ public class VisitorController {
             return "visitorRegister";
         } else {
             return "redirect:../../index";
-        }
-    }
-
-    @RequestMapping("/queryVisitorByName")
-    public void queryVisitorByName(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String v_name = request.getParameter("v_name");
-        Visitor visitor = visitorService.queryVisitor(new Visitor(v_name));
-        if (visitor == null) {
-            response.getWriter().print("true");
-        } else {
-            response.getWriter().print("false");
         }
     }
 

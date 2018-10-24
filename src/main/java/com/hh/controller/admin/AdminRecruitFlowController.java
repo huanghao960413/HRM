@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.hh.controller.admin;
 
 import com.hh.model.RecruitFlow;
 import com.hh.model.RecruitInformation;
@@ -9,6 +9,7 @@ import com.hh.util.PageDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -49,6 +50,45 @@ public class AdminRecruitFlowController {
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", currentPage);
         return "adminRecruitFlowShow";
+    }
+
+    @RequestMapping("/adminRecruitFlowInterview")
+    public String adminRecruitFlowInterview(HttpServletRequest request) throws Exception {
+        request.setAttribute("rf_id", request.getParameter("rf_id"));
+        return "adminRecruitFlowInterview";
+    }
+
+    @RequestMapping("/adminRecruitFlowInterviewDo")
+    public String adminRecruitFlowInterviewDo(HttpServletRequest request) throws Exception {
+        Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRf_id(rf_id);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        if (recruitFlow == null) {
+            request.setAttribute("msg", "没有此投递");
+            return "adminRecruitFlowInterview";
+        }
+        Integer s_id = Integer.valueOf(request.getParameter("s_id"));
+        String rf_time = request.getParameter("rf_time");
+        recruitFlow.setS_id(s_id);
+        recruitFlow.setRf_time(rf_time);
+        recruitFlow.setRf_state(1);
+        if (recruitFlowService.updateRecruitFlow(recruitFlow) < 1) {
+            request.setAttribute("msg", "修改失败");
+            return "adminRecruitFlowInterview";
+        }
+        return "redirect:adminIndex";
+    }
+
+    @RequestMapping("/adminRecruitFlowEliminate")
+    public String adminRecruitFlowEliminate(HttpServletRequest request) throws Exception {
+        Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRf_id(rf_id);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        recruitFlow.setRf_state(-1);
+        recruitFlowService.updateRecruitFlow(recruitFlow);
+        return "redirect:adminIndex";
     }
 
 }

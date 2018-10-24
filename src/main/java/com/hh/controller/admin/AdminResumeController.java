@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.hh.controller.admin;
 
 import com.hh.model.RecruitFlow;
 import com.hh.model.Resume;

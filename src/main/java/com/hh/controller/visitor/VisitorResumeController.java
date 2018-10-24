@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.hh.controller.visitor;
 
 import com.hh.model.Resume;
 import com.hh.model.Visitor;
@@ -40,7 +40,7 @@ public class VisitorResumeController {
         Resume queryResume = new Resume();
         queryResume.setR_id(r_id);
         Resume resume = resumeService.queryResume(queryResume);
-        if (resume.getR_title() == null) {
+        if (resume == null) {
             return "redirect:visitorResumeShowByVid";
         } else {
             request.setAttribute("resume", resume);

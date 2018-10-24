@@ -27,7 +27,7 @@
                 } else {
                     $.ajax({
                         type: "get",
-                        url: "queryVisitorByName",
+                        url: "ajaxVisitorByName",
                         data: {v_name: $("input[name='v_name']").val()},
                         success: function (obj) {
                             if (obj == "false") {

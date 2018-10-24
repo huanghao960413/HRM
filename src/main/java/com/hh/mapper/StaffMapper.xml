@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.StaffDao">
+    <insert id="addStaff"></insert>
+    <update id="updateStaff"></update>
+    <delete id="delStaff"></delete>
+    <select id="queryStaff" resultType="Staff">
+        SELECT * FROM T_STAFF WHERE S_ID=#{s_id}
+    </select>
+    <select id="queryStaffList" resultType="Staff">
+        SELECT * FROM T_STAFF
+        <where>
+            <if test="d_id!=null">
+                D_ID=#{d_id}
+            </if>
+            <if test="p_id!=null">
+                P_ID=#{p_id}
+            </if>
+            <if test="s_state!=null">
+                S_STATE=#{s_state}
+            </if>
+        </where>
+    </select>
+    <select id="queryStaffLimit" resultType="Staff">
+
+    </select>
+</mapper>

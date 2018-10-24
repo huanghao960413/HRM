@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.hh.controller.visitor;
 
 import com.hh.model.RecruitFlow;
 import com.hh.model.RecruitInformation;
@@ -93,4 +93,5 @@ public class VisitorRecruitFlowController {
         recruitFlowService.delRecruitFlow(recruitFlow);
         return "redirect:visitorIndex";
     }
+
 }
