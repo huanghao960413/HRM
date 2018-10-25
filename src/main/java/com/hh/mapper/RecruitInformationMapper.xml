@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hh.dao.RecruitInformationDao">
+    <insert id="addRecruitInformation">
+        INSERT INTO T_RECRUIT_INFORMATION VALUES (SEQ_RI_ID.NEXTVAL,#{ri_worker},#{ri_salary},#{ri_education},#{ri_experience},#{ri_number},#{ri_time})
+    </insert>
+    <update id="updateRecruitInformation">
+        UPDATE T_RECRUIT_INFORMATION
+        <set>
+            <if test="ri_worker!=null">
+                RI_WORKER=#{ri_worker},
+            </if>
+            <if test="ri_salary!=null">
+                RI_SALARY=#{ri_salary},
+            </if>
+            <if test="ri_education!=null">
+                RI_EDUCATION=#{ri_education},
+            </if>
+            <if test="ri_experience!=null">
+                RI_EXPERIENCE=#{ri_experience},
+            </if>
+            <if test="ri_number!=null">
+                RI_NUMBER=#{ri_number},
+            </if>
+        </set>
+        WHERE RI_ID=#{ri_id}
+    </update>
+    <delete id="delRecruitInformation">
+        DELETE FROM T_RECRUIT_INFORMATION WHERE RI_ID=#{ri_id}
+    </delete>
     <select id="queryRecruitInformation" resultType="RecruitInformation">
         SELECT * FROM T_RECRUIT_INFORMATION WHERE RI_ID=#{ri_id}
     </select>

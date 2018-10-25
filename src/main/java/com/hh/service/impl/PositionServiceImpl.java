@@ -14,15 +14,24 @@ public class PositionServiceImpl implements PositionService {
     private PositionDao positionDao;
 
     public Integer addPosition(Position position) {
-        return null;
+        if (position == null) {
+            return 0;
+        }
+        return positionDao.addPosition(position);
     }
 
     public Integer delPosition(Position position) {
-        return null;
+        if (position == null) {
+            return 0;
+        }
+        return positionDao.delPosition(position);
     }
 
     public Integer updatePosition(Position position) {
-        return null;
+        if (position == null) {
+            return 0;
+        }
+        return positionDao.updatePosition(position);
     }
 
     public Position queryPosition(Position position) {
@@ -40,7 +49,10 @@ public class PositionServiceImpl implements PositionService {
     }
 
     public List<Position> queryPositionLimit(HashMap<String, Object> hashMap) {
-        return null;
+        if (hashMap == null) {
+            return null;
+        }
+        return positionDao.queryPositionLimit(hashMap);
     }
 
 }

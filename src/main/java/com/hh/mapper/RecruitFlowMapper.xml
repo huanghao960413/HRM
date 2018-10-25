@@ -5,6 +5,9 @@
         INSERT INTO T_RECRUIT_FLOW
         VALUES(SEQ_RF_ID.NEXTVAL,#{ri_id},#{v_id},#{r_id},0,null,null,0)
     </insert>
+    <delete id="delRecruitFlow" parameterType="RecruitFlow">
+        DELETE FROM T_RECRUIT_FLOW WHERE RF_ID=#{rf_id}
+    </delete>
     <update id="updateRecruitFlow" parameterType="RecruitFlow">
         UPDATE T_RECRUIT_FLOW
         <set>
@@ -23,9 +26,6 @@
         </set>
         WHERE RF_ID=#{rf_id}
     </update>
-    <delete id="delRecruitFlow" parameterType="RecruitFlow">
-        DELETE FROM T_RECRUIT_FLOW WHERE RF_ID=#{rf_id}
-    </delete>
     <select id="queryRecruitFlow" resultType="RecruitFlow">
         SELECT * FROM T_RECRUIT_FLOW
         <where>

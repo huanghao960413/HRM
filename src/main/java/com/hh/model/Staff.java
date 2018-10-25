@@ -11,6 +11,7 @@ public class Staff implements Serializable {
     private String s_age;
     private String s_phone;
     private String s_email;
+    private Double s_salary;
     private Integer d_id;
     private Integer p_id;
     private Integer s_state;
@@ -94,6 +95,14 @@ public class Staff implements Serializable {
         this.s_email = s_email;
     }
 
+    public Double getS_salary() {
+        return s_salary;
+    }
+
+    public void setS_salary(Double s_salary) {
+        this.s_salary = s_salary;
+    }
+
     public Integer getD_id() {
         return d_id;
     }
@@ -118,20 +127,4 @@ public class Staff implements Serializable {
         this.s_state = s_state;
     }
 
-    @Override
-    public String toString() {
-        return "Staff{" +
-                "s_id=" + s_id +
-                ", s_name='" + s_name + '\'' +
-                ", s_pass='" + s_pass + '\'' +
-                ", s_full_name='" + s_full_name + '\'' +
-                ", s_sex='" + s_sex + '\'' +
-                ", s_age='" + s_age + '\'' +
-                ", s_phone='" + s_phone + '\'' +
-                ", s_email='" + s_email + '\'' +
-                ", d_id=" + d_id +
-                ", p_id=" + p_id +
-                ", s_state=" + s_state +
-                '}';
-    }
 }

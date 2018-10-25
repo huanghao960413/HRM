@@ -75,6 +75,10 @@
             <td><input type="text" name="s_email" value="${requestScope.resume.r_email}"></td>
         </tr>
         <tr>
+            <td>薪资:</td>
+            <td><input type="text" name="s_salary" value="${requestScope.information.ri_salary}"></td>
+        </tr>
+        <tr>
             <td>员工账号:</td>
             <td><input type="text" name="s_name" value="${requestScope.resume.r_phone}"></td>
         </tr>

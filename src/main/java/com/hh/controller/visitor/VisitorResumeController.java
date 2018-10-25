@@ -63,7 +63,6 @@ public class VisitorResumeController {
         }
         resume.setV_id(visitor.getV_id());
         resume.setR_state(0);
-        System.out.println(resume);
         Integer result = resumeService.addResume(resume);
         if (result == 0) {
             request.setAttribute("msg", "请正确输入信息");

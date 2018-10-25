@@ -110,10 +110,13 @@ public class AdminRecruitFlowController {
             request.setAttribute("msg", "没有此投递");
             return "adminRecruitFlowInterview";
         }
+
+        RecruitInformation information = recruitInformationService.queryRecruitInformation(new RecruitInformation(recruitFlow.getRi_id()));
         Resume queryResume = new Resume();
         queryResume.setR_id(recruitFlow.getR_id());
         Resume resume = resumeService.queryResume(queryResume);
         request.setAttribute("resume", resume);
+        request.setAttribute("information",information);
         request.setAttribute("rf_id", rf_id);
         return "adminRecruitFlowEmploy";
     }

@@ -3,10 +3,46 @@
 <mapper namespace="com.hh.dao.StaffDao">
     <insert id="addStaff">
         INSERT INTO T_STAFF
-        VALUES(SEQ_S_ID.NEXTVAL,#{s_name},#{s_pass},#{s_full_name},#{s_sex},#{s_age},#{s_phone},#{s_email},#{d_id},#{p_id},0)
+        VALUES(SEQ_S_ID.NEXTVAL,#{s_name},#{s_pass},#{s_full_name},#{s_sex},#{s_age},#{s_phone},#{s_email},#{s_salary},#{d_id},#{p_id},0)
     </insert>
-    <update id="updateStaff"></update>
-    <delete id="delStaff"></delete>
+    <delete id="delStaff">
+        DELETE FROM T_STAFF WHERE S_ID=#{s_id}
+    </delete>
+    <update id="updateStaff">
+        UPDATE T_STAFF
+        <set>
+            <if test="s_pass!=null">
+                S_PASS=#{s_pass},
+            </if>
+            <if test="s_full_name!=null">
+                S_FULL_NAME=#{s_full_name},
+            </if>
+            <if test="s_sex!=null">
+                S_SEX=#{s_sex},
+            </if>
+            <if test="s_age!=null">
+                S_AGE=#{s_age},
+            </if>
+            <if test="s_phone!=null">
+                S_PHONE=#{s_phone},
+            </if>
+            <if test="s_email!=null">
+                S_EMAIL=#{s_email},
+            </if>
+            <if test="s_salary!=null">
+                S_SALARY=#{s_salary}
+            </if>
+            <if test="d_id!=null">
+                D_ID=#{d_id},
+            </if>
+            <if test="p_id!=null">
+                P_ID=#{p_id},
+            </if>
+            <if test="s_state!=null">
+                S_STATE=#{s_state},
+            </if>
+        </set>
+    </update>
     <select id="queryStaff" resultType="Staff">
         SELECT * FROM T_STAFF WHERE S_ID=#{s_id}
     </select>

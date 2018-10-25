@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hh.dao.PositionDao">
-    <insert id="addPosition"></insert>
-    <update id="updatePosition"></update>
-    <delete id="delPosition"></delete>
+    <insert id="addPosition">
+        INSERT INTO T_POSITION VALUES (SEQ_P_ID.NEXTVAL,#{p_name},#{d_id})
+    </insert>
+    <update id="updatePosition">
+        UPDATE T_POSITION SET P_NAME=#{p_name} WHERE p_id=#{p_id}
+    </update>
+    <delete id="delPosition">
+        DELETE FROM T_POSITION WHERE P_ID=#{p_id}
+    </delete>
     <select id="queryPosition" resultType="Position">
         SELECT * FROM T_POSITION WHERE P_ID=#{p_id}
     </select>
     <select id="queryPositionList" resultType="Position">
         SELECT * FROM T_POSITION WHERE D_ID=#{d_id}
     </select>
-    <select id="queryPositionLimit" resultType="Position"></select>
+    <select id="queryPositionLimit" resultType="Position">
+        SELECT * FROM (
+        SELECT rownum rn,T_POSITION.*
+        FROM T_POSITION
+        <where>
+            <if test="d_id!=null">
+                AND D_ID=#{d_id}
+            </if>
+        </where>
+        AND rownum &lt;= #{pageSize}) p
+        WHERE p.rn &gt;= #{currentPage}
+        GROUP BY D_ID
+    </select>
 </mapper>

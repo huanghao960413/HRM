@@ -15,15 +15,24 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentDao departmentDao;
 
     public Integer addDepartment(Department department) {
-        return null;
+        if (department == null) {
+            return 0;
+        }
+        return departmentDao.addDepartment(department);
     }
 
     public Integer delDepartment(Department department) {
-        return null;
+        if (department == null) {
+            return 0;
+        }
+        return departmentDao.delDepartment(department);
     }
 
     public Integer updateDepartment(Department department) {
-        return null;
+        if (department == null) {
+            return 0;
+        }
+        return departmentDao.updateDepartment(department);
     }
 
     public Department queryDepartment(Department department) {
@@ -41,7 +50,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     public List<Department> queryDepartmentLimit(HashMap<String, Object> hashMap) {
-        return null;
+        if (hashMap == null) {
+            return null;
+        }
+        return departmentDao.queryDepartmentLimit(hashMap);
     }
 
 }
