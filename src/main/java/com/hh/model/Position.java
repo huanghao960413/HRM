@@ -10,6 +10,10 @@ public class Position implements Serializable {
     public Position() {
     }
 
+    public Position(Integer p_id) {
+        this.p_id = p_id;
+    }
+
     public Position(String p_name, Integer d_id) {
         this.p_name = p_name;
         this.d_id = d_id;

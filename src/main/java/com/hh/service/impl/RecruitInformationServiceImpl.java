@@ -15,6 +15,28 @@ public class RecruitInformationServiceImpl implements RecruitInformationService 
     @Autowired
     private RecruitInformationDao recruitInformationDao;
 
+    public Integer addRecruitInformation(RecruitInformation recruitInformation) {
+        if (recruitInformation == null) {
+            return 0;
+        }
+        return recruitInformationDao.addRecruitInformation(recruitInformation);
+    }
+
+    public Integer delRecruitInformation(RecruitInformation recruitInformation) {
+        if (recruitInformation == null) {
+            return 0;
+        }
+        return recruitInformationDao.delRecruitInformation(recruitInformation);
+    }
+
+    public Integer updateRecruitInformation(RecruitInformation recruitInformation) {
+        if (recruitInformation == null) {
+            return 0;
+        }
+        System.out.println(recruitInformation);
+        return recruitInformationDao.updateRecruitInformation(recruitInformation);
+    }
+
     public RecruitInformation queryRecruitInformation(RecruitInformation recruitInformation) {
         if (recruitInformation == null) {
             return null;

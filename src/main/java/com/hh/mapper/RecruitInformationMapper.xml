@@ -22,6 +22,9 @@
             <if test="ri_number!=null">
                 RI_NUMBER=#{ri_number},
             </if>
+            <if test="ri_time!=null">
+                RI_TIME=#{ri_time},
+            </if>
         </set>
         WHERE RI_ID=#{ri_id}
     </update>

@@ -14,7 +14,12 @@
         SELECT * FROM T_POSITION WHERE P_ID=#{p_id}
     </select>
     <select id="queryPositionList" resultType="Position">
-        SELECT * FROM T_POSITION WHERE D_ID=#{d_id}
+        SELECT * FROM T_POSITION
+        <where>
+            <if test="d_id!=null">
+                D_ID=#{d_id}
+            </if>
+        </where>
     </select>
     <select id="queryPositionLimit" resultType="Position">
         SELECT * FROM (
@@ -22,11 +27,12 @@
         FROM T_POSITION
         <where>
             <if test="d_id!=null">
-                AND D_ID=#{d_id}
+                D_ID=#{d_id} AND
             </if>
+            rownum &lt;= #{pageSize}
         </where>
-        AND rownum &lt;= #{pageSize}) p
+        ) p
         WHERE p.rn &gt;= #{currentPage}
-        GROUP BY D_ID
+        ORDER BY D_ID
     </select>
 </mapper>

@@ -17,7 +17,10 @@
     <title>管理员首页</title>
 </head>
 <body>
-<a href="">招聘信息管理</a>
+<a href="adminIndex">首页</a>
+<a href="adminRecruitInformationShow">招聘信息管理</a>
+<a href="adminDepartmentShow">部门管理</a>
+<a href="adminPositionShow">职位管理</a>
 <hr/>
 <c:if test="${requestScope.informationList != null}">
     <c:forEach items="${requestScope.informationList}" var="i">
@@ -35,7 +38,7 @@
                     <td>${i.ri_education}</td>
                     <td></td>
                     <td>${i.ri_number}人</td>
-                    <td style="text-align: right"><a href="adminRecruitFlowShow?ri_id=${i.ri_id}" onclick="return add()">查看投递</a></td>
+                    <td style="text-align: right"><a href="adminRecruitFlowShow?ri_id=${i.ri_id}">查看投递</a></td>
                 </tr>
             </table>
         </div>
