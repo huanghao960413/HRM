@@ -5,7 +5,7 @@
         INSERT INTO T_POSITION VALUES (SEQ_P_ID.NEXTVAL,#{p_name},#{d_id})
     </insert>
     <update id="updatePosition">
-        UPDATE T_POSITION SET P_NAME=#{p_name} WHERE p_id=#{p_id}
+        UPDATE T_POSITION SET P_NAME=#{p_name} WHERE P_ID=#{p_id}
     </update>
     <delete id="delPosition">
         DELETE FROM T_POSITION WHERE P_ID=#{p_id}
@@ -27,12 +27,12 @@
         FROM T_POSITION
         <where>
             <if test="d_id!=null">
-                D_ID=#{d_id} AND
+                D_ID=#{d_id}
             </if>
-            rownum &lt;= #{pageSize}
+            AND rownum &lt;= #{pageSize}
         </where>
         ) p
         WHERE p.rn &gt;= #{currentPage}
-        ORDER BY D_ID
+        ORDER BY p.D_ID
     </select>
 </mapper>

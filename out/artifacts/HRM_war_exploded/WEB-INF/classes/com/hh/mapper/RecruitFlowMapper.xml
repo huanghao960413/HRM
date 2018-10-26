@@ -62,8 +62,9 @@
             <if test="v_id!=null">
                 AND V_ID=#{v_id}
             </if>
+            AND rownum &lt;= #{pageSize}
         </where>
-        AND rownum &lt;= #{pageSize}) rf
+        ) rf
         WHERE rf.rn &gt;= #{currentPage}
     </select>
 </mapper>

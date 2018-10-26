@@ -19,6 +19,10 @@ public class Staff implements Serializable {
     public Staff() {
     }
 
+    public Staff(Integer s_id) {
+        this.s_id = s_id;
+    }
+
     public Staff(String s_name, String s_pass, String s_full_name, String s_sex, String s_age, String s_phone, String s_email, Integer d_id, Integer p_id) {
         this.s_name = s_name;
         this.s_pass = s_pass;
@@ -127,4 +131,21 @@ public class Staff implements Serializable {
         this.s_state = s_state;
     }
 
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "s_id=" + s_id +
+                ", s_name='" + s_name + '\'' +
+                ", s_pass='" + s_pass + '\'' +
+                ", s_full_name='" + s_full_name + '\'' +
+                ", s_sex='" + s_sex + '\'' +
+                ", s_age='" + s_age + '\'' +
+                ", s_phone='" + s_phone + '\'' +
+                ", s_email='" + s_email + '\'' +
+                ", s_salary=" + s_salary +
+                ", d_id=" + d_id +
+                ", p_id=" + p_id +
+                ", s_state=" + s_state +
+                '}';
+    }
 }

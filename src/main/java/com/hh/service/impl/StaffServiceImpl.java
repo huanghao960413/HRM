@@ -16,17 +16,23 @@ public class StaffServiceImpl implements StaffService {
 
     public Integer addStaff(Staff staff) {
         if (staff == null) {
-            return null;
+            return 0;
         }
         return staffDao.addStaff(staff);
     }
 
     public Integer delStaff(Staff staff) {
-        return null;
+        if (staff == null) {
+            return 0;
+        }
+        return staffDao.delStaff(staff);
     }
 
     public Integer updateStaff(Staff staff) {
-        return null;
+        if (staff == null) {
+            return 0;
+        }
+        return staffDao.updateStaff(staff);
     }
 
     public Staff queryStaff(Staff staff) {
@@ -44,7 +50,10 @@ public class StaffServiceImpl implements StaffService {
     }
 
     public List<Staff> queryStaffLimit(HashMap<String, Object> hashMap) {
-        return null;
+        if (hashMap == null) {
+            return null;
+        }
+        return staffDao.queryStaffLimit(hashMap);
     }
 
 }

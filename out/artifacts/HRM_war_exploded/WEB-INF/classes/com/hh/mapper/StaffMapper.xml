@@ -30,7 +30,7 @@
                 S_EMAIL=#{s_email},
             </if>
             <if test="s_salary!=null">
-                S_SALARY=#{s_salary}
+                S_SALARY=#{s_salary},
             </if>
             <if test="d_id!=null">
                 D_ID=#{d_id},
@@ -42,6 +42,7 @@
                 S_STATE=#{s_state},
             </if>
         </set>
+        WHERE S_ID=#{s_id}
     </update>
     <select id="queryStaff" resultType="Staff">
         SELECT * FROM T_STAFF WHERE S_ID=#{s_id}
@@ -61,6 +62,23 @@
         </where>
     </select>
     <select id="queryStaffLimit" resultType="Staff">
-
+        SELECT * FROM (
+        SELECT rownum rn,T_STAFF.*
+        FROM T_STAFF
+        <where>
+            <if test="d_id!=null">
+                D_ID=#{d_id}
+            </if>
+            <if test="p_id!=null">
+                AND P_ID=#{p_id}
+            </if>
+            <if test="s_state!=null">
+                AND S_STATE=#{s_state}
+            </if>
+            AND rownum &lt;= #{pageSize}
+        </where>
+        ORDER BY D_ID
+        ) s
+        WHERE s.rn &gt;= #{currentPage}
     </select>
 </mapper>
