@@ -5,14 +5,12 @@ import com.hh.service.RecruitFlowService;
 import com.hh.service.RecruitInformationService;
 import com.hh.service.ResumeService;
 import com.hh.service.StaffService;
-import com.hh.util.PageDao;
+import com.hh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,10 +31,10 @@ public class AdminRecruitFlowController {
     @RequestMapping("/adminRecruitFlowShow")
     public String adminRecruitFlowShow(HttpServletRequest request) throws Exception {
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
-        RecruitFlow recruitFlow = new RecruitFlow();
-        recruitFlow.setRi_id(ri_id);
-        int totalRows = recruitFlowService.queryRecruitFlowList(recruitFlow).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRi_id(ri_id);
+        int totalRows = recruitFlowService.queryRecruitFlowList(queryRecruitFlow).size();
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -46,24 +44,39 @@ public class AdminRecruitFlowController {
         hashMap.put("currentPage", (currentPage - 1) * PAGESIZE + 1);
         hashMap.put("pageSize", PAGESIZE * currentPage);
         List<RecruitFlow> flowList = recruitFlowService.queryRecruitFlowLimit(hashMap);
-        List<RecruitInformation> informationList = new ArrayList<RecruitInformation>();
-        for (RecruitFlow flow : flowList) {
-            informationList.add(recruitInformationService.queryRecruitInformation(new RecruitInformation(flow.getRi_id())));
+        List<Resume> resumeList = new ArrayList<Resume>();
+        for (RecruitFlow rf : flowList) {
+            resumeList.add(resumeService.queryResume(new Resume(rf.getR_id())));
         }
+        request.setAttribute("resumeList", resumeList);
         request.setAttribute("flowList", flowList);
-        request.setAttribute("informationList", informationList);
+        request.setAttribute("ri_id", ri_id);
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", currentPage);
         return "adminRecruitFlowShow";
+    }
+
+    //根据投递id查找简历
+    @RequestMapping("/adminResumeShow")
+    public String adminResumeShow(HttpServletRequest request) throws Exception {
+        Integer rf_id = Integer.parseInt(request.getParameter("rf_id"));
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(rf_id));
+        if (recruitFlow.getRf_consult() == 0) {
+            recruitFlow.setRf_consult(1);
+            recruitFlowService.updateRecruitFlow(recruitFlow);
+        }
+        Resume queryResume = new Resume();
+        queryResume.setR_id(recruitFlow.getR_id());
+        Resume resume = resumeService.queryResume(queryResume);
+        request.setAttribute("resume", resume);
+        return "adminResumeShow";
     }
 
     //根据投递id淘汰投递信息
     @RequestMapping("/adminRecruitFlowEliminate")
     public String adminRecruitFlowEliminate(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
-        RecruitFlow queryRecruitFlow = new RecruitFlow();
-        queryRecruitFlow.setRf_id(rf_id);
-        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(rf_id));
         recruitFlow.setRf_state(-1);
         recruitFlowService.updateRecruitFlow(recruitFlow);
         return "redirect:adminIndex";
@@ -80,9 +93,7 @@ public class AdminRecruitFlowController {
     @RequestMapping("/adminRecruitFlowInterviewDo")
     public String adminRecruitFlowInterviewDo(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
-        RecruitFlow queryRecruitFlow = new RecruitFlow();
-        queryRecruitFlow.setRf_id(rf_id);
-        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(rf_id));
         if (recruitFlow == null) {
             request.setAttribute("msg", "没有此投递");
             return "adminRecruitFlowInterview";
@@ -103,20 +114,17 @@ public class AdminRecruitFlowController {
     @RequestMapping("/adminRecruitFlowEmploy")
     public String adminRecruitFlowEmploy(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
-        RecruitFlow queryRecruitFlow = new RecruitFlow();
-        queryRecruitFlow.setRf_id(rf_id);
-        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(rf_id));
         if (recruitFlow == null) {
             request.setAttribute("msg", "没有此投递");
             return "adminRecruitFlowInterview";
         }
-
         RecruitInformation information = recruitInformationService.queryRecruitInformation(new RecruitInformation(recruitFlow.getRi_id()));
         Resume queryResume = new Resume();
         queryResume.setR_id(recruitFlow.getR_id());
         Resume resume = resumeService.queryResume(queryResume);
         request.setAttribute("resume", resume);
-        request.setAttribute("information",information);
+        request.setAttribute("information", information);
         request.setAttribute("rf_id", rf_id);
         return "adminRecruitFlowEmploy";
     }
@@ -129,9 +137,7 @@ public class AdminRecruitFlowController {
             return "adminRecruitFlowEmploy";
         }
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
-        RecruitFlow queryRecruitFlow = new RecruitFlow();
-        queryRecruitFlow.setRf_id(rf_id);
-        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
+        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(rf_id));
         recruitFlow.setRf_state(3);
         recruitFlowService.updateRecruitFlow(recruitFlow);
         return "redirect:adminIndex";

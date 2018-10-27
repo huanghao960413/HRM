@@ -77,7 +77,6 @@
             </if>
             AND rownum &lt;= #{pageSize}
         </where>
-        ORDER BY D_ID
         ) s
         WHERE s.rn &gt;= #{currentPage}
     </select>

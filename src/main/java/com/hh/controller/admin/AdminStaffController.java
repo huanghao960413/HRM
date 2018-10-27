@@ -6,7 +6,7 @@ import com.hh.model.Staff;
 import com.hh.service.DepartmentService;
 import com.hh.service.PositionService;
 import com.hh.service.StaffService;
-import com.hh.util.PageDao;
+import com.hh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +31,7 @@ public class AdminStaffController {
     public String adminStaffShow(HttpServletRequest request) {
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
         int totalRows = staffService.queryStaffList(new Staff()).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));

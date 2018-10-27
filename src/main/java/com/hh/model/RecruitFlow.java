@@ -15,8 +15,8 @@ public class RecruitFlow implements Serializable {
     public RecruitFlow() {
     }
 
-    public RecruitFlow(Integer v_id) {
-        this.v_id = v_id;
+    public RecruitFlow(Integer rf_id) {
+        this.rf_id = rf_id;
     }
 
     public RecruitFlow(Integer ri_id, Integer v_id, Integer r_id) {

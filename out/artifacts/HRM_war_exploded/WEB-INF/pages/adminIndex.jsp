@@ -22,6 +22,7 @@
 <a href="adminDepartmentShow">部门管理</a>
 <a href="adminPositionShow">职位管理</a>
 <a href="adminStaffShow">员工管理</a>
+<a href="adminTrainShow">培训项目管理</a>
 <hr/>
 <c:if test="${requestScope.informationList != null}">
     <c:forEach items="${requestScope.informationList}" var="i">

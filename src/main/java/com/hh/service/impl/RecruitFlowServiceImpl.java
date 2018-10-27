@@ -18,6 +18,10 @@ public class RecruitFlowServiceImpl implements RecruitFlowService {
         if (recruitFlow == null) {
             return 0;
         }
+        RecruitFlow recruitFlow1 = recruitFlowDao.queryRecruitFlow(recruitFlow);
+        if (recruitFlow1 != null) {
+            return 1;
+        }
         return recruitFlowDao.addRecruitFlow(recruitFlow);
     }
 
@@ -31,6 +35,9 @@ public class RecruitFlowServiceImpl implements RecruitFlowService {
     public Integer updateRecruitFlow(RecruitFlow recruitFlow) {
         if (recruitFlow == null) {
             return 0;
+        }
+        if (recruitFlow.getRf_state() == 1) {
+            
         }
         return recruitFlowDao.updateRecruitFlow(recruitFlow);
     }

@@ -1,0 +1,59 @@
+package com.hh.service.impl;
+
+import com.hh.dao.TrainDao;
+import com.hh.model.Train;
+import com.hh.service.TrainService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+
+@Service
+public class TrainServiceImpl implements TrainService {
+    @Autowired
+    private TrainDao trainDao;
+
+    public Integer addTrain(Train train) {
+        if (train == null) {
+            return 0;
+        }
+        return trainDao.addTrain(train);
+    }
+
+    public Integer delTrain(Train train) {
+        if (train == null) {
+            return 0;
+        }
+        return trainDao.delTrain(train);
+    }
+
+    public Integer updateTrain(Train train) {
+        if (train == null) {
+            return 0;
+        }
+        return trainDao.updateTrain(train);
+    }
+
+    public Train queryTrain(Train train) {
+        if (train == null) {
+            return null;
+        }
+        return trainDao.queryTrain(train);
+    }
+
+    public List<Train> queryTrainList(Train train) {
+        if (train == null) {
+            return null;
+        }
+        return trainDao.queryTrainList(train);
+    }
+
+    public List<Train> queryTrainLimit(HashMap<String, Object> hashMap) {
+        if (hashMap == null) {
+            return null;
+        }
+        return trainDao.queryTrainLimit(hashMap);
+    }
+
+}

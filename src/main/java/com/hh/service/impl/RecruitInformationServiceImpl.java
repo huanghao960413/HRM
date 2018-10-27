@@ -1,6 +1,8 @@
 package com.hh.service.impl;
 
+import com.hh.dao.RecruitFlowDao;
 import com.hh.dao.RecruitInformationDao;
+import com.hh.model.RecruitFlow;
 import com.hh.model.RecruitInformation;
 import com.hh.service.RecruitInformationService;
 import org.apache.ibatis.jdbc.Null;
@@ -14,6 +16,8 @@ import java.util.List;
 public class RecruitInformationServiceImpl implements RecruitInformationService {
     @Autowired
     private RecruitInformationDao recruitInformationDao;
+    @Autowired
+    private RecruitFlowDao recruitFlowDao;
 
     public Integer addRecruitInformation(RecruitInformation recruitInformation) {
         if (recruitInformation == null) {
@@ -26,6 +30,14 @@ public class RecruitInformationServiceImpl implements RecruitInformationService 
         if (recruitInformation == null) {
             return 0;
         }
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRi_id(recruitInformation.getRi_id());
+        List<RecruitFlow> recruitFlowList = recruitFlowDao.queryRecruitFlowList(queryRecruitFlow);
+        if (recruitFlowList != null) {
+            for (RecruitFlow rf : recruitFlowList) {
+                recruitFlowDao.delRecruitFlow(rf);
+            }
+        }
         return recruitInformationDao.delRecruitInformation(recruitInformation);
     }
 
@@ -33,7 +45,12 @@ public class RecruitInformationServiceImpl implements RecruitInformationService 
         if (recruitInformation == null) {
             return 0;
         }
-        System.out.println(recruitInformation);
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setRi_id(recruitInformation.getRi_id());
+        List<RecruitFlow> recruitFlowList = recruitFlowDao.queryRecruitFlowList(queryRecruitFlow);
+        if (recruitFlowList != null) {
+            return 1;
+        }
         return recruitInformationDao.updateRecruitInformation(recruitInformation);
     }
 

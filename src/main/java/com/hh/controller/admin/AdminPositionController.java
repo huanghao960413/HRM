@@ -4,7 +4,7 @@ import com.hh.model.Department;
 import com.hh.model.Position;
 import com.hh.service.DepartmentService;
 import com.hh.service.PositionService;
-import com.hh.util.PageDao;
+import com.hh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ public class AdminPositionController {
     public String adminPositionShow(HttpServletRequest request) throws Exception {
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
         int totalRows = positionService.queryPositionList(new Position()).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));

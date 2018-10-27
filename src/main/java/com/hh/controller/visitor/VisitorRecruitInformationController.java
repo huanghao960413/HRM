@@ -3,7 +3,7 @@ package com.hh.controller.visitor;
 import com.hh.model.RecruitInformation;
 import com.hh.model.Visitor;
 import com.hh.service.RecruitInformationService;
-import com.hh.util.PageDao;
+import com.hh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +28,7 @@ public class VisitorRecruitInformationController {
         }
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
         int totalRows = recruitInformationService.queryRecruitInformationList(new RecruitInformation()).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));

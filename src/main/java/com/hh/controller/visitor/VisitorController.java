@@ -47,11 +47,11 @@ public class VisitorController {
         String v_name = request.getParameter("v_name");
         String v_pass = request.getParameter("v_pass");
         Integer result = visitorService.addVisitor(new Visitor(v_name,v_pass));
-        if (result == 0) {
+        if (result < 1) {
             request.setAttribute("msg","注册失败");
             return "visitorRegister";
         } else {
-            return "redirect:../../index";
+            return "../../index";
         }
     }
 

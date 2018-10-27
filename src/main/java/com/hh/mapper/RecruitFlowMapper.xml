@@ -32,6 +32,15 @@
             <if test="rf_id!=null">
                 AND RF_ID=#{rf_id}
             </if>
+            <if test="ri_id!=null">
+                AND RI_ID=#{ri_id}
+            </if>
+            <if test="v_id!=null">
+                AND V_ID=#{v_id}
+            </if>
+            <if test="r_id!=null">
+                AND R_ID=#{r_id}
+            </if>
         </where>
     </select>
     <select id="queryRecruitFlowList" resultType="RecruitFlow">

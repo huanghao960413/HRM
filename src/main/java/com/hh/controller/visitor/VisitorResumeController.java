@@ -24,7 +24,9 @@ public class VisitorResumeController {
         if (visitor == null) {
             return "redirect:visitorLogin";
         }
-        List<Resume> resumeList = resumeService.queryResumeList(new Resume(visitor.getV_id()));
+        Resume queryResume = new Resume();
+        queryResume.setV_id(visitor.getV_id());
+        List<Resume> resumeList = resumeService.queryResumeList(queryResume);
         request.setAttribute("resumeList", resumeList);
         return "visitorResumeShowByVid";
     }
@@ -37,9 +39,7 @@ public class VisitorResumeController {
             return "redirect:visitorLogin";
         }
         Integer r_id = Integer.parseInt(request.getParameter("r_id"));
-        Resume queryResume = new Resume();
-        queryResume.setR_id(r_id);
-        Resume resume = resumeService.queryResume(queryResume);
+        Resume resume = resumeService.queryResume(new Resume(r_id));
         if (resume == null) {
             return "redirect:visitorResumeShowByVid";
         } else {

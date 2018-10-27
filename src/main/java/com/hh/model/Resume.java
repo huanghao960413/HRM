@@ -28,8 +28,8 @@ public class Resume implements Serializable {
     public Resume() {
     }
 
-    public Resume(Integer v_id) {
-        this.v_id = v_id;
+    public Resume(Integer r_id) {
+        this.r_id = r_id;
     }
 
     public Resume(Integer v_id, Integer r_state) {

@@ -7,7 +7,7 @@ import com.hh.model.Visitor;
 import com.hh.service.RecruitFlowService;
 import com.hh.service.RecruitInformationService;
 import com.hh.service.ResumeService;
-import com.hh.util.PageDao;
+import com.hh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +36,10 @@ public class VisitorRecruitFlowController {
             return "redirect:visitorLogin";
         }
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
-        int totalRows = recruitFlowService.queryRecruitFlowList(new RecruitFlow(visitor.getV_id())).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        RecruitFlow queRecruitFlow = new RecruitFlow();
+        queRecruitFlow.setV_id(visitor.getV_id());
+        int totalRows = recruitFlowService.queryRecruitFlowList(queRecruitFlow).size();
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -64,7 +66,9 @@ public class VisitorRecruitFlowController {
         if (visitor == null) {
             return "redirect:visitorLogin";
         }
-        List<Resume> resumeList = resumeService.queryResumeList(new Resume(visitor.getV_id()));
+        Resume queryResume = new Resume();
+        queryResume.setV_id(visitor.getV_id());
+        List<Resume> resumeList = resumeService.queryResumeList(queryResume);
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
         request.setAttribute("ri_id", ri_id);
         request.setAttribute("resumeList", resumeList);

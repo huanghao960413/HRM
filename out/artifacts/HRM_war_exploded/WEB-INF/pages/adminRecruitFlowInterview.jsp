@@ -89,7 +89,9 @@
         </tr>
         <tr>
             <td>面试时间:</td>
-            <td><input type="text" name="rf_time"></td>
+            <td>
+                <input type="date" name="rf_time">
+            </td>
         </tr>
         <tr>
             <td></td>

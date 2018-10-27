@@ -87,7 +87,7 @@
             <td><input type="text" name="s_pass" value="${requestScope.resume.r_phone}"></td>
         </tr>
         <tr>
-            <td>部门</td>
+            <td>部门:</td>
             <td>
                 <select name="d_id" id="department">
                     <option value="">--请选择--</option>
@@ -95,7 +95,7 @@
             </td>
         </tr>
         <tr>
-            <td>职位</td>
+            <td>职位:</td>
             <td>
                 <select name="p_id" id="position">
                     <option value="">--请选择--</option>

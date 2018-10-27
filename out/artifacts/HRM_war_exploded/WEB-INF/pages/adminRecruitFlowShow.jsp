@@ -24,16 +24,12 @@
         <div style="border:1px dashed #000">
             <table cellspacing="0px">
                 <tr>
-                    <td>${informationList[loop.count-1].ri_worker}</td>
-                    <td></td>
-                    <td style="color: red">${informationList[loop.count-1].ri_salary}</td>
+                    <td>${requestScope.resumeList[loop.count-1].r_name}</td>
                     <td></td>
                     <td style="text-align: right">${f.rf_consult==0?"未阅":"已阅"}</td>
                 </tr>
                 <tr>
                     <td><a href="adminResumeShow?rf_id=${f.rf_id}">查看简历</a></td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td style="text-align: right">
                         <c:if test="${f.rf_state>-1 && f.rf_state<3}">
@@ -63,17 +59,17 @@
 <c:if test="${requestScope.totalPages > 0}">
     <table>
         <tr>
-            <td><a href="adminRecruitFlowShow?currentPage=1">首页</a></td>
+            <td><a href="adminRecruitFlowShow?ri_id=${requestScope.ri_id}&currentPage=1">首页</a></td>
             <c:if test="${requestScope.currentPage != 1}">
-                <td><a href="adminRecruitFlowShow?currentPage=${requestScope.currentPage - 1}"><</a></td>
+                <td><a href="adminRecruitFlowShow?ri_id=${requestScope.ri_id}&currentPage=${requestScope.currentPage - 1}"><</a></td>
             </c:if>
             <c:forEach var="i" begin="1" end="${requestScope.totalPages}">
-                <td><a href="adminRecruitFlowShow?currentPage=${i}">${i}</a></td>
+                <td><a href="adminRecruitFlowShow?ri_id=${requestScope.ri_id}&currentPage=${i}">${i}</a></td>
             </c:forEach>
             <c:if test="${requestScope.currentPage != requestScope.totalPages}">
-                <td><a href="adminRecruitFlowShow?currentPage=${requestScope.currentPage + 1}">></a></td>
+                <td><a href="adminRecruitFlowShow?ri_id=${requestScope.ri_id}&currentPage=${requestScope.currentPage + 1}">></a></td>
             </c:if>
-            <td><a href="adminRecruitFlowShow?currentPage=${requestScope.totalPages}">尾页</a></td>
+            <td><a href="adminRecruitFlowShow?ri_id=${requestScope.ri_id}&currentPage=${requestScope.totalPages}">尾页</a></td>
         </tr>
     </table>
 </c:if>

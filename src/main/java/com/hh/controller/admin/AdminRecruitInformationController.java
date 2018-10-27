@@ -2,7 +2,7 @@ package com.hh.controller.admin;
 
 import com.hh.model.RecruitInformation;
 import com.hh.service.RecruitInformationService;
-import com.hh.util.PageDao;
+import com.hh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +20,13 @@ public class AdminRecruitInformationController {
     //管理员首页(显示招聘信息)
     @RequestMapping("/adminIndex")
     public String adminIndex(HttpServletRequest request) {
-        HashMap<String, Object> hashMap = new HashMap<String, Object>();
         int totalRows = recruitInformationService.queryRecruitInformationList(new RecruitInformation()).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));
         }
+        HashMap<String, Object> hashMap = new HashMap<String, Object>();
         hashMap.put("currentPage", (currentPage - 1) * PAGESIZE + 1);
         hashMap.put("pageSize", PAGESIZE * currentPage);
         List<RecruitInformation> informationList = recruitInformationService.queryRecruitInformationLimit(hashMap);
@@ -41,7 +41,7 @@ public class AdminRecruitInformationController {
     public String adminRecruitInformationShow(HttpServletRequest request) throws Exception {
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
         int totalRows = recruitInformationService.queryRecruitInformationList(new RecruitInformation()).size();
-        int totalPages = PageDao.getTotalPages(totalRows, PAGESIZE);
+        int totalPages = PageUtil.getTotalPages(totalRows, PAGESIZE);
         int currentPage = 1;
         if (request.getParameter("currentPage") != null) {
             currentPage = Integer.parseInt(request.getParameter("currentPage"));

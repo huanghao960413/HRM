@@ -1,6 +1,8 @@
 package com.hh.service.impl;
 
+import com.hh.dao.RecruitFlowDao;
 import com.hh.dao.ResumeDao;
+import com.hh.model.RecruitFlow;
 import com.hh.model.Resume;
 import com.hh.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import java.util.List;
 public class ResumeServiceImpl implements ResumeService {
     @Autowired
     private ResumeDao resumeDao;
+    @Autowired
+    private RecruitFlowDao recruitFlowDao;
 
     public Integer addResume(Resume resume) {
         if (resume == null) {
@@ -37,6 +41,12 @@ public class ResumeServiceImpl implements ResumeService {
         if (resume.getR_id() == null) {
             return 0;
         }
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setR_id(resume.getR_id());
+        List<RecruitFlow> recruitFlowList = recruitFlowDao.queryRecruitFlowList(queryRecruitFlow);
+        if (recruitFlowList != null) {
+            return 1;
+        }
         return resumeDao.delResume(resume);
     }
 
@@ -53,6 +63,12 @@ public class ResumeServiceImpl implements ResumeService {
                 resume.getR_phone().equals("") ||
                 resume.getR_email().equals("")) {
             return 0;
+        }
+        RecruitFlow queryRecruitFlow = new RecruitFlow();
+        queryRecruitFlow.setR_id(resume.getR_id());
+        List<RecruitFlow> recruitFlowList = recruitFlowDao.queryRecruitFlowList(queryRecruitFlow);
+        if (recruitFlowList != null) {
+            return 1;
         }
         return resumeDao.updateResume(resume);
     }

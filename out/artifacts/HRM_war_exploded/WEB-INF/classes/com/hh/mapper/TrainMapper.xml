@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.TrainDao">
+    <insert id="addTrain">
+        INSERT INTO T_TRAIN VALUES(SEQ_T_ID.NEXTVAL,#{t_name},#{t_message},#{t_start_time},#{t_over_time},#{t_address})
+    </insert>
+    <update id="updateTrain">
+        UPDATE T_TRAIN
+        <set>
+            <if test="t_name!=null">
+                T_NAME=#{t_name},
+            </if>
+            <if test="t_message!=null">
+                T_MESSAGE=#{t_message},
+            </if>
+            <if test="t_start_time!=null">
+                T_START_TIME=#{t_start_time},
+            </if>
+            <if test="t_over_time!=null">
+                T_OVER_TIME=#{t_over_time},
+            </if>
+            <if test="t_address!=null">
+                T_ADDRESS=#{t_address},
+            </if>
+        </set>
+        WHERE T_ID=#{t_id}
+    </update>
+    <delete id="delTrain">
+        DELETE FROM T_TRAIN WHERE T_ID=#{t_id}
+    </delete>
+    <select id="queryTrain" resultType="Train">
+        SELECT * FROM T_TRAIN WHERE T_ID=#{t_id}
+    </select>
+    <select id="queryTrainList" resultType="Train">
+        SELECT * FROM T_TRAIN
+    </select>
+    <select id="queryTrainLimit" resultType="Train">
+        SELECT * FROM (
+        SELECT rownum rn,T_TRAIN.*
+        FROM T_TRAIN
+        where rownum &lt;= #{pageSize}) t
+        WHERE t.rn &gt;= #{currentPage}
+    </select>
+</mapper>
