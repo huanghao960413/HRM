@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.TrainRecordDao">
+    <insert id="addTrainRecord">
+        INSERT INTO T_TRAIN_RECORD VALUES(SEQ_TR_ID.NEXTVAL,#{t_id},#{s_id},null,0)
+    </insert>
+    <update id="updateTrainRecord">
+        UPDATE T_TRAIN_RECORD
+        <set>
+            <if test="t_id!=null">
+                T_ID=#{tr_id},
+            </if>
+            <if test="s_id!=null">
+                S_ID=#{s_id},
+            </if>
+            <if test="tr_score!=null">
+                TR_SCORE=#{tr_score},
+            </if>
+            <if test="tr_state!=null">
+                TR_STATE=#{tr_state},
+            </if>
+        </set>
+        WHERE TR_ID=#{tr_id}
+    </update>
+    <delete id="delTrainRecord">
+        DELETE FROM T_TRAIN_RECORD WHERE TR_ID=#{tr_id}
+    </delete>
+    <select id="queryTrainRecord" resultType="TrainRecord">
+        SELECT * FROM T_TRAIN_RECORD WHERE TR_ID=#{tr_id}
+    </select>
+    <select id="queryTrainRecordList" resultType="TrainRecord">
+        SELECT * FROM T_TRAIN_RECORD
+        <where>
+            <if test="t_id">
+                AND T_ID=#{t_id}
+            </if>
+            <if test="s_id">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="tr_state">
+                AND TR_STATE=#{tr_state}
+            </if>
+        </where>
+    </select>
+    <select id="queryTrainRecordLimit" resultType="TrainRecord">
+        SELECT * FROM (
+        SELECT rownum rn,T_TRAIN_RECORD.*
+        FROM T_TRAIN_RECORD
+        <where>
+            <if test="t_id">
+                AND T_ID=#{t_id}
+            </if>
+            <if test="s_id">
+                AND S_ID=#{s_id}
+            </if>
+            AND rownum &lt;= #{pageSize}
+        </where>
+        ) tr
+        WHERE tr.rn &gt;= #{currentPage}
+    </select>
+</mapper>
