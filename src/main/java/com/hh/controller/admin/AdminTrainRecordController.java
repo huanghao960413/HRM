@@ -87,12 +87,12 @@ public class AdminTrainRecordController {
         Integer t_id = Integer.valueOf(request.getParameter("t_id"));
         List<Staff> staffList = null;
         Integer result = 0;
-        if (request.getParameter("s_id") == null) {
+        if (request.getParameter("s_id").equals("")) {
             Staff queryStaff = new Staff();
-            if (request.getParameter("p_id") != null) {
-                queryStaff.setP_id(Integer.valueOf(request.getParameter("p_id")));
-            } else {
+            if (request.getParameter("p_id").equals("")) {
                 queryStaff.setP_id(Integer.valueOf(request.getParameter("d_id")));
+            } else {
+                queryStaff.setP_id(Integer.valueOf(request.getParameter("p_id")));
             }
             staffList = staffService.queryStaffList(queryStaff);
             for (Staff s : staffList) {

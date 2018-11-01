@@ -14,27 +14,33 @@
 <head>
     <base href="<%=basePath%>"/>
     <title>管理员登录</title>
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
 </head>
 <body>
-<form action="adminLoginDo" method="post">
-    <table>
-        <tr>
-            <td>管理员:</td>
-            <td><input type="text" name="a_name"></td>
-        </tr>
-        <tr>
-            <td>密码:</td>
-            <td><input type="text" name="a_pass"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td style="color: red">${requestScope.msg}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="登录"></td>
-        </tr>
-    </table>
-</form>
+<div>
+    <header class="layui-elip">后台登录</header>
+    <form action="adminLoginDo" method="post" class="layui-form">
+        <div class="layui-input-inline">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input type="text" name="a_name" required lay-verify="required" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div><br/>
+        <div class="layui-input-inline">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input type="password" name="a_pass" required lay-verify="required" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div><br/>
+        <div class="layui-input-inline login-btn">
+            <label class="layui-form-label">&nbsp;</label>
+            <div class="layui-input-block">
+                <input type="submit" class="layui-btn" value="登录"></input>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

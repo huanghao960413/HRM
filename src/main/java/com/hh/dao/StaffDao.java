@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface StaffDao {
 
-    Integer addStaff(Staff department);
+    Integer addStaff(Staff staff);
 
-    Integer delStaff(Staff department);
+    Integer delStaff(Staff staff);
 
-    Integer updateStaff(Staff department);
+    Integer updateStaff(Staff staff);
 
-    Staff queryStaff(Staff department);
+    Staff queryStaff(Staff staff);
 
-    List<Staff> queryStaffList(Staff department);
+    List<Staff> queryStaffList(Staff staff);
 
     List<Staff> queryStaffLimit(HashMap<String, Object> hashMap);
 

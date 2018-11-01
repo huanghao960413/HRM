@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
+@RequestMapping("/visitor")
 public class VisitorRecruitFlowController {
     @Autowired
     private RecruitFlowService recruitFlowService;
@@ -29,11 +30,11 @@ public class VisitorRecruitFlowController {
     private final int PAGESIZE = 2;
 
     //根据游客id查看投递信息
-    @RequestMapping("/visitorRecruitFlowShow")
-    public String visitorRecruitFlowShow(HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping("/recruitFlowShow")
+    public String recruitFlowShow(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
-            return "redirect:visitorLogin";
+            return "redirect:/visitor/login";
         }
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
         RecruitFlow queRecruitFlow = new RecruitFlow();
@@ -56,15 +57,15 @@ public class VisitorRecruitFlowController {
         request.setAttribute("informationList", informationList);
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", currentPage);
-        return "visitorRecruitFlowShow";
+        return "visitor/recruitFlowShow";
     }
 
     //进入投递页面
-    @RequestMapping("/visitorRecruitFlowAdd")
-    public String visitorRecruitFlowAdd(HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping("/recruitFlowAdd")
+    public String recruitFlowAdd(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
-            return "redirect:visitorLogin";
+            return "redirect:/visitor/login";
         }
         Resume queryResume = new Resume();
         queryResume.setV_id(visitor.getV_id());
@@ -72,42 +73,43 @@ public class VisitorRecruitFlowController {
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
         request.setAttribute("ri_id", ri_id);
         request.setAttribute("resumeList", resumeList);
-        return "visitorRecruitFlowAdd";
+        return "visitor/recruitFlowAdd";
     }
 
     //投递简历
-    @RequestMapping("/visitorRecruitFlowAddDo")
-    public String visitorRecruitFlowAddDo(HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping("/recruitFlowAddDo")
+    public String recruitFlowAddDo(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
-            return "redirect:visitorLogin";
+            return "redirect:/visitor/login";
         }
         Integer r_id = Integer.parseInt(request.getParameter("r_id"));
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
-        recruitFlowService.addRecruitFlow(new RecruitFlow(ri_id, visitor.getV_id(), r_id));
-        return "redirect:visitorIndex";
+        Integer result = recruitFlowService.addRecruitFlow(new RecruitFlow(ri_id, visitor.getV_id(), r_id));
+        System.out.println(result);
+        return "redirect:/visitor/index";
     }
 
     //根据投递id删除投递信息(未确定使用)
-    @RequestMapping("/visitorRecruitFlowDel")
-    public String visitorRecruitFlowDel(HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping("/recruitFlowDel")
+    public String recruitFlowDel(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
-            return "redirect:visitorLogin";
+            return "redirect:/visitor/login";
         }
         Integer rf_id = Integer.parseInt(request.getParameter("rf_id"));
         RecruitFlow recruitFlow = new RecruitFlow();
         recruitFlow.setRf_id(rf_id);
         recruitFlowService.delRecruitFlow(recruitFlow);
-        return "redirect:visitorIndex";
+        return "redirect:/visitor/index";
     }
 
     //根据投递id确认面试
-    @RequestMapping("/visitorRecruitFlowInterview")
-    public String visitorRecruitFlowInterview(HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping("/recruitFlowInterview")
+    public String recruitFlowInterview(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
-            return "redirect:visitorLogin";
+            return "redirect:/visitor/login";
         }
         Integer rf_id = Integer.parseInt(request.getParameter("rf_id"));
         RecruitFlow queryRecruitFlow = new RecruitFlow();
@@ -115,7 +117,7 @@ public class VisitorRecruitFlowController {
         RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(queryRecruitFlow);
         recruitFlow.setRf_state(2);
         recruitFlowService.updateRecruitFlow(recruitFlow);
-        return "redirect:visitorIndex";
+        return "redirect:/visitor/index";
     }
 
 }

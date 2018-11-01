@@ -14,17 +14,18 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
+@RequestMapping("/visitor")
 public class VisitorRecruitInformationController {
     @Autowired
     private RecruitInformationService recruitInformationService;
     private final int PAGESIZE = 2;
 
     //游客主页(显示招聘信息)
-    @RequestMapping("/visitorIndex")
-    public String visitorIndex(HttpServletRequest request, HttpSession session) {
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request, HttpSession session) {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
-            return "redirect:visitorLogin";
+            return "redirect:/visitor/login";
         }
         HashMap<String, Object> hashMap = new HashMap<String, Object>();
         int totalRows = recruitInformationService.queryRecruitInformationList(new RecruitInformation()).size();
@@ -39,7 +40,7 @@ public class VisitorRecruitInformationController {
         request.setAttribute("informationList", informationList);
         request.setAttribute("totalPages", totalPages);
         request.setAttribute("currentPage", currentPage);
-        return "visitorIndex";
+        return "visitor/index";
     }
 
 }

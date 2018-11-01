@@ -5,7 +5,7 @@
         INSERT INTO T_DEPARTMENT VALUES (SEQ_D_ID.NEXTVAL,#{d_name},#{d_time})
     </insert>
     <update id="updateDepartment">
-        UPDATE T_DEPARTMENT SET D_NAME=#{d_name} WHERE d_id=#{d_id}
+        UPDATE T_DEPARTMENT SET D_NAME=#{d_name} WHERE D_ID=#{d_id}
     </update>
     <delete id="delDepartment">
         DELETE FROM T_DEPARTMENT WHERE D_ID=#{d_id}

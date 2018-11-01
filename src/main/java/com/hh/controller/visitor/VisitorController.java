@@ -10,46 +10,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/visitor")
 public class VisitorController {
     @Autowired
     private VisitorService visitorService;
 
     //进入登录界面
-    @RequestMapping("/visitorLogin")
-    public String visitorLogin() throws Exception {
-        return "visitorLogin";
+    @RequestMapping("/login")
+    public String login() throws Exception {
+        return "visitor/login";
     }
 
     //登录
-    @RequestMapping("/visitorLoginDo")
-    public String visitorLoginDo(HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping("/loginDo")
+    public String loginDo(HttpServletRequest request, HttpSession session) throws Exception {
         String v_name = request.getParameter("v_name");
         String v_pass = request.getParameter("v_pass");
         Visitor visitor = visitorService.queryVisitor(new Visitor(v_name, v_pass));
         if (visitor == null) {
             request.setAttribute("msg", "用户名或密码错误!");
-            return "visitorLogin";
+            return "visitor/login";
         } else {
             session.setAttribute("visitor", visitor);
-            return "redirect:visitorIndex";
+            return "redirect:/visitor/index";
         }
     }
 
     //进入注册界面
-    @RequestMapping("/visitorRegister")
-    public String visitorRegister() throws Exception {
-        return "visitorRegister";
+    @RequestMapping("/register")
+    public String register() throws Exception {
+        return "visitor/register";
     }
 
     //注册
-    @RequestMapping("/visitorRegisterDo")
-    public String visitorRegisterDo(HttpServletRequest request) throws Exception {
+    @RequestMapping("/registerDo")
+    public String registerDo(HttpServletRequest request) throws Exception {
         String v_name = request.getParameter("v_name");
         String v_pass = request.getParameter("v_pass");
         Integer result = visitorService.addVisitor(new Visitor(v_name,v_pass));
         if (result < 1) {
             request.setAttribute("msg","注册失败");
-            return "visitorRegister";
+            return "visitor/register";
         } else {
             return "../../index";
         }

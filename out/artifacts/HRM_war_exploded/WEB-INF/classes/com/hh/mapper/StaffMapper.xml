@@ -45,19 +45,30 @@
         WHERE S_ID=#{s_id}
     </update>
     <select id="queryStaff" resultType="Staff">
-        SELECT * FROM T_STAFF WHERE S_ID=#{s_id}
+        SELECT * FROM T_STAFF
+        <where>
+            <if test="s_id!=null">
+                S_ID=#{s_id}
+            </if>
+            <if test="s_name!=null">
+                AND S_NAME=#{s_name}
+            </if>
+            <if test="s_pass!=null">
+                AND S_PASS=#{s_pass}
+            </if>
+        </where>
     </select>
     <select id="queryStaffList" resultType="Staff">
         SELECT * FROM T_STAFF
         <where>
             <if test="d_id!=null">
-                D_ID=#{d_id}
+                AND D_ID=#{d_id}
             </if>
             <if test="p_id!=null">
-                P_ID=#{p_id}
+                AND P_ID=#{p_id}
             </if>
             <if test="s_state!=null">
-                S_STATE=#{s_state}
+                AND S_STATE=#{s_state}
             </if>
         </where>
     </select>
@@ -67,7 +78,7 @@
         FROM T_STAFF
         <where>
             <if test="d_id!=null">
-                D_ID=#{d_id}
+                AND D_ID=#{d_id}
             </if>
             <if test="p_id!=null">
                 AND P_ID=#{p_id}

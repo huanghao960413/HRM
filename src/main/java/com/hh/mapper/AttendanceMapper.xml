@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.AttendanceDao">
+    <insert id="addAttendance">
+        INSERT INTO T_ATTENDANCE VALUES (SEQ_A_ID.NEXTVAL,#{s_id},#{a_date},#{a_start_time},null,#{a_state})
+    </insert>
+    <update id="updateAttendance">
+        UPDATE T_ATTENDANCE
+        <set>
+            <if test="a_over_time!=null">
+                A_OVER_TIME=#{a_over_time},
+            </if>
+            <if test="a_state!=null">
+                A_STATE=#{a_state},
+            </if>
+        </set>
+        WHERE A_ID=#{a_id}
+    </update>
+    <delete id="delAttendance">
+        DELETE FROM T_ATTENDANCE WHERE A_ID=#{a_id}
+    </delete>
+    <select id="queryAttendance" resultType="Attendance">
+        SELECT * FROM T_ATTENDANCE
+        <where>
+            <if test="a_id!=null">
+                AND A_ID=#{a_id}
+            </if>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="a_date!=null">
+                AND A_DATE=#{a_date}
+            </if>
+        </where>
+    </select>
+    <select id="queryAttendanceList" resultType="Attendance">
+        SELECT * FROM T_ATTENDANCE
+        <where>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="a_state!=null">
+                AND A_STATE=#{a_state}
+            </if>
+            <if test="a_date!=null">
+                AND A_DATE LIKE CONCAT(#{a_date},'%')
+            </if>
+        </where>
+    </select>
+    <select id="queryAttendanceLimit" resultType="Attendance">
+        SELECT * FROM (
+        SELECT rownum rn,T_ATTENDANCE.*
+        FROM T_ATTENDANCE
+        <where>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="a_state!=null">
+                AND A_STATE=#{a_state}
+            </if>
+            <if test="a_date!=null">
+                AND A_DATE LIKE CONCAT(#{a_date},'%')
+            </if>
+            AND rownum &lt;= #{pageSize}
+        </where>
+        ) a
+        WHERE a.rn &gt;= #{currentPage}
+    </select>
+</mapper>
