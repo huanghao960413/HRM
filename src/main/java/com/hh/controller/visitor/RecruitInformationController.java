@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/visitor")
-public class VisitorRecruitInformationController {
+public class RecruitInformationController {
     @Autowired
     private RecruitInformationService recruitInformationService;
     private final int PAGESIZE = 2;

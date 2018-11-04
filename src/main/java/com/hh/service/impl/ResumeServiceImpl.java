@@ -44,8 +44,12 @@ public class ResumeServiceImpl implements ResumeService {
         RecruitFlow queryRecruitFlow = new RecruitFlow();
         queryRecruitFlow.setR_id(resume.getR_id());
         List<RecruitFlow> recruitFlowList = recruitFlowDao.queryRecruitFlowList(queryRecruitFlow);
-        if (recruitFlowList != null) {
-            return 1;
+        if (recruitFlowList.size() != 0) {
+            for (RecruitFlow rf : recruitFlowList) {
+                if (rf.getRf_state() != -1) {
+                    return 1;
+                }
+            }
         }
         return resumeDao.delResume(resume);
     }
@@ -67,8 +71,12 @@ public class ResumeServiceImpl implements ResumeService {
         RecruitFlow queryRecruitFlow = new RecruitFlow();
         queryRecruitFlow.setR_id(resume.getR_id());
         List<RecruitFlow> recruitFlowList = recruitFlowDao.queryRecruitFlowList(queryRecruitFlow);
-        if (recruitFlowList != null) {
-            return 1;
+        if (recruitFlowList.size() != 0) {
+            for (RecruitFlow rf : recruitFlowList) {
+                if (rf.getRf_state() != -1) {
+                    return 1;
+                }
+            }
         }
         return resumeDao.updateResume(resume);
     }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hh.dao.ResumeDao">
     <insert id="addResume" parameterType="Resume">
-        INSERT INTO T_RESUME VALUES(SEQ_R_ID.NEXTVAL,#{v_id},#{r_title},#{r_name},#{r_sex},#{r_location},#{r_age},#{r_phone},#{r_email},#{r_school},#{r_school_time},#{r_major},#{r_education},#{r_worker},#{r_worker_time},#{r_worker_experience},#{r_job_intention},#{r_certificate},#{r_hobby},#{r_self_assessment},#{r_state})
+        INSERT INTO T_RESUME VALUES(SEQ_R_ID.NEXTVAL,#{v_id},#{r_title},#{r_name},#{r_sex},#{r_location},#{r_age},#{r_phone},#{r_email},#{r_school},#{r_school_time},#{r_major},#{r_education},#{r_worker},#{r_worker_time},#{r_worker_experience},null,#{r_certificate},#{r_hobby},#{r_self_assessment},#{r_state})
     </insert>
     <update id="updateResume" parameterType="Resume">
         UPDATE T_RESUME

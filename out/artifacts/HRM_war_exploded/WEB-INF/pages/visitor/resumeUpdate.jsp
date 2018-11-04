@@ -155,20 +155,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>求职意向</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>职位:</td>
-                        <td><input type="text" name="r_job_intention" value="${requestScope.resume.r_job_intention}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <hr/>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>其他</td>
                         <td></td>
                     </tr>
@@ -191,7 +177,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="修改" onclick="return add()"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="修改" onclick="return add()"></td>
                     </tr>
                 </table>
             </form>

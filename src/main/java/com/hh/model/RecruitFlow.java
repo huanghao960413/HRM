@@ -88,4 +88,18 @@ public class RecruitFlow implements Serializable {
     public void setRf_state(Integer rf_state) {
         this.rf_state = rf_state;
     }
+
+    @Override
+    public String toString() {
+        return "RecruitFlow{" +
+                "rf_id=" + rf_id +
+                ", ri_id=" + ri_id +
+                ", v_id=" + v_id +
+                ", r_id=" + r_id +
+                ", rf_consult=" + rf_consult +
+                ", rf_time='" + rf_time + '\'' +
+                ", s_id=" + s_id +
+                ", rf_state=" + rf_state +
+                '}';
+    }
 }

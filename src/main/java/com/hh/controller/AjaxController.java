@@ -63,6 +63,7 @@ public class AjaxController {
         Integer p_id = Integer.valueOf(request.getParameter("p_id"));
         Staff queryStaff = new Staff();
         queryStaff.setP_id(p_id);
+        queryStaff.setS_state(1);
         List<Staff> staffList = staffService.queryStaffList(queryStaff);
         return staffList;
     }

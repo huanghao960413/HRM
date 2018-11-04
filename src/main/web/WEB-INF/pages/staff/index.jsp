@@ -33,7 +33,8 @@
             <li class="layui-nav-item"><a href="staff/index">首页</a></li>
             <li class="layui-nav-item"><a href="staff/staffShow">通讯录</a></li>
             <li class="layui-nav-item"><a href="staff/trainRecordShow">员工培训</a></li>
-            <li class="layui-nav-item"><a href="">上月薪资</a></li>
+            <li class="layui-nav-item"><a href="staff/rewardPunishShow">奖惩记录</a></li>
+            <li class="layui-nav-item"><a href="staff/wageShow">员工薪资</a></li>
             <li class="layui-nav-item"><a class="layui-btn layui-btn-sm" href="staff/attendanceAdd" onclick="return add()">打卡</a></li>
         </ul>
 

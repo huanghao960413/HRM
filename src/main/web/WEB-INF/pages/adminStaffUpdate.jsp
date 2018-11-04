@@ -85,6 +85,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">

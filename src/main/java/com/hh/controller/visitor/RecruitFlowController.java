@@ -20,7 +20,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/visitor")
-public class VisitorRecruitFlowController {
+public class RecruitFlowController {
     @Autowired
     private RecruitFlowService recruitFlowService;
     @Autowired
@@ -86,7 +86,6 @@ public class VisitorRecruitFlowController {
         Integer r_id = Integer.parseInt(request.getParameter("r_id"));
         Integer ri_id = Integer.parseInt(request.getParameter("ri_id"));
         Integer result = recruitFlowService.addRecruitFlow(new RecruitFlow(ri_id, visitor.getV_id(), r_id));
-        System.out.println(result);
         return "redirect:/visitor/index";
     }
 

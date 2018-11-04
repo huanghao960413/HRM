@@ -64,7 +64,7 @@
                                 <td>&nbsp;</td>
                                 <td>${r.r_state==0?"未投递":"已投递"}</td>
                                 <td>&nbsp;</td>
-                                <td style="text-align: right"><a href="visitor/resumeShowByRid?r_id=${r.r_id}">管理简历</a>
+                                <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="visitor/resumeShowByRid?r_id=${r.r_id}">管理简历</a>
                                 </td>
                             </tr>
                         </table>
@@ -89,3 +89,4 @@
 </script>
 </body>
 </html>
+n

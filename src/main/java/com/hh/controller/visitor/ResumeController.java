@@ -14,7 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/visitor")
-public class VisitorResumeController {
+public class ResumeController {
     @Autowired
     private ResumeService resumeService;
 
@@ -75,12 +75,13 @@ public class VisitorResumeController {
 
     //根据简历id删除简历
     @RequestMapping("/resumeDel")
-    public String resumeDel(Resume resume, HttpServletRequest request, HttpSession session) throws Exception {
+    public String resumeDel(HttpServletRequest request, HttpSession session) throws Exception {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
         if (visitor == null) {
             return "redirect:/visitor/login";
         }
-        resumeService.delResume(resume);
+        Integer r_id = Integer.valueOf(request.getParameter("r_id"));
+        resumeService.delResume(new Resume(r_id));
         return "redirect:/visitor/resumeShowByVid";
     }
 

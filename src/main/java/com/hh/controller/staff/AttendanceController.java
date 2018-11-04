@@ -59,12 +59,11 @@ public class AttendanceController {
         }
         String date = DateUtil.getDate();
         Attendance attendance = attendanceService.queryAttendance(new Attendance(staff.getS_id(),date));
-        System.out.println(attendance);
         Integer result = -1;
         if (attendance == null) {
             String start_time = DateUtil.getTime();
             result = attendanceService.addAttendance(new Attendance(staff.getS_id(),date,start_time));
-        } else {
+        } else if (attendance.getA_over_time() == null){
             String over_date = DateUtil.getTime();
             attendance.setA_over_time(over_date);
             result = attendanceService.updateAttendance(attendance);

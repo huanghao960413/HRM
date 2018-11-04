@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.RewardPunishDao">
+    <insert id="addRewardPunish">
+        INSERT INTO T_REWARD_PUNISH VALUES (SEQ_RP_ID.NEXTVAL,#{s_id},#{rp_date},#{rp_message},#{rp_money},#{rp_state})
+    </insert>
+    <update id="updateRewardPunish">
+        UPDATE T_REWARD_PUNISH
+        <set>
+            <if test="s_id!=null">
+                S_ID=#{s_id},
+            </if>
+            <if test="rp_date!=null">
+                RP_DATE=#{rp_date},
+            </if>
+            <if test="rp_message!=null">
+                RP_MESSAGE=#{rp_message},
+            </if>
+            <if test="rp_money!=null">
+                RP_MONEY=#{rp_money},
+            </if>
+            <if test="rp_state!=null">
+                RP_STATE=#{rp_state},
+            </if>
+        </set>
+        WHERE RP_ID=#{rp_id}
+    </update>
+    <delete id="delRewardPunish">
+        DELETE FROM T_REWARD_PUNISH WHERE RP_ID=#{rp_id}
+    </delete>
+    <select id="queryRewardPunish" resultType="RewardPunish">
+        SELECT * FROM T_REWARD_PUNISH WHERE RP_ID=#{rp_id}
+    </select>
+    <select id="queryRewardPunishList" resultType="RewardPunish">
+        SELECT * FROM T_REWARD_PUNISH
+        <where>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="rp_date!=null">
+                AND RP_DATE LIKE CONCAT(#{rp_date},'%')
+            </if>
+            <if test="rp_state!=null">
+                AND RP_STATE=#{rp_state}
+            </if>
+        </where>
+    </select>
+    <select id="queryRewardPunishLimit" resultType="RewardPunish">
+        SELECT * FROM (
+        SELECT rownum rn,T_REWARD_PUNISH.*
+        FROM T_REWARD_PUNISH
+        <where>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="rp_date!=null">
+                AND RP_DATE LIKE CONCAT(#{rp_date},'%')
+            </if>
+            <if test="rp_state!=null">
+                AND RP_STATE=#{rp_state}
+            </if>
+            AND rownum &lt;= #{pageSize}
+        </where>
+        ) rp
+        WHERE rp.rn &gt;= #{currentPage}
+    </select>
+</mapper>

@@ -118,16 +118,6 @@
                     <td colspan="3">${requestScope.resume.r_worker_experience}</td>
                 </tr>
                 <tr>
-                    <td>求职意向</td>
-                    <td colspan="5">
-                        <hr/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>职位:</td>
-                    <td colspan="5">${requestScope.resume.r_job_intention}</td>
-                </tr>
-                <tr>
                     <td>其他</td>
                     <td colspan="5">
                         <hr/>

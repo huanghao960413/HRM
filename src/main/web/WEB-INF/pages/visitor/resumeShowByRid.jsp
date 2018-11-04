@@ -16,6 +16,11 @@
     <base href="<%=basePath%>"/>
     <title>简历查看</title>
     <link rel="stylesheet" href="../../../layui/css/layui.css" media="all">
+    <style>
+        .td1 {
+            width: 10%;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -55,15 +60,11 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <a href="visitor/resumeUpdate?r_id=${requestScope.resume.r_id}">修改</a>
-            <a href="visitor/resumeDel?r_id=${requestScope.resume.r_id}">删除</a>
-            <table border="1" cellspacing="0">
-                <tr>
-                    <td><span>简历标题:${requestScope.resume.r_title}</span></td>
-                    <td colspan="5">
-                        <hr/>
-                    </td>
-                </tr>
+            <a class="layui-btn layui-btn-sm" href="visitor/resumeUpdate?r_id=${requestScope.resume.r_id}">修改</a>
+            <a class="layui-btn layui-btn-sm" href="visitor/resumeDel?r_id=${requestScope.resume.r_id}">删除</a>
+            <hr/>
+            <span>简历标题:${requestScope.resume.r_title}</span>
+            <table border="1" cellspacing="0" width="300px">
                 <tr>
                     <td>基本信息</td>
                     <td colspan="5">
@@ -72,11 +73,11 @@
                 </tr>
                 <tr>
                     <td>*姓名:</td>
-                    <td>${requestScope.resume.r_name}</td>
+                    <td class="td1">${requestScope.resume.r_name}</td>
                     <td>*性别:</td>
-                    <td>${requestScope.resume.r_sex}</td>
+                    <td class="td1">${requestScope.resume.r_sex}</td>
                     <td>*年龄:</td>
-                    <td>${requestScope.resume.r_age}</td>
+                    <td class="td1">${requestScope.resume.r_age}</td>
                 </tr>
                 <tr>
                     <td>*所在地:</td>
@@ -123,16 +124,6 @@
                     <td>${requestScope.resume.r_worker}</td>
                     <td>职责:</td>
                     <td colspan="3">${requestScope.resume.r_worker_experience}</td>
-                </tr>
-                <tr>
-                    <td>求职意向</td>
-                    <td colspan="5">
-                        <hr/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>职位:</td>
-                    <td colspan="5">${requestScope.resume.r_job_intention}</td>
                 </tr>
                 <tr>
                     <td>其他</td>

@@ -26,6 +26,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -116,16 +118,6 @@
                     <td>${requestScope.resume.r_worker}</td>
                     <td>职责:</td>
                     <td colspan="3">${requestScope.resume.r_worker_experience}</td>
-                </tr>
-                <tr>
-                    <td>求职意向</td>
-                    <td colspan="5">
-                        <hr/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>职位:</td>
-                    <td colspan="5">${requestScope.resume.r_job_intention}</td>
                 </tr>
                 <tr>
                     <td>其他</td>

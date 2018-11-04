@@ -5,14 +5,27 @@ public class RewardPunish {
     private Integer s_id;
     private String rp_date;
     private String rp_message;
-    private String rp_money;
-    private String rp_state;
+    private Double rp_money;
+    private Integer rp_state;
 
     public RewardPunish() {
     }
 
     public RewardPunish(Integer rp_id) {
         this.rp_id = rp_id;
+    }
+
+    public RewardPunish(Integer s_id, String rp_date) {
+        this.s_id = s_id;
+        this.rp_date = rp_date;
+    }
+
+    public RewardPunish(Integer s_id, String rp_date, String rp_message, Double rp_money, Integer rp_state) {
+        this.s_id = s_id;
+        this.rp_date = rp_date;
+        this.rp_message = rp_message;
+        this.rp_money = rp_money;
+        this.rp_state = rp_state;
     }
 
     public Integer getRp_id() {
@@ -47,19 +60,19 @@ public class RewardPunish {
         this.rp_message = rp_message;
     }
 
-    public String getRp_money() {
+    public Double getRp_money() {
         return rp_money;
     }
 
-    public void setRp_money(String rp_money) {
+    public void setRp_money(Double rp_money) {
         this.rp_money = rp_money;
     }
 
-    public String getRp_state() {
+    public Integer getRp_state() {
         return rp_state;
     }
 
-    public void setRp_state(String rp_state) {
+    public void setRp_state(Integer rp_state) {
         this.rp_state = rp_state;
     }
 }

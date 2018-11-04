@@ -52,7 +52,7 @@ public class VisitorController {
             request.setAttribute("msg","注册失败");
             return "visitor/register";
         } else {
-            return "../../index";
+            return "visitor/login";
         }
     }
 

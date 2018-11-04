@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hh.dao.WageDao">
+    <insert id="addWage">
+        INSERT INTO T_WAGE VALUES (SEQ_W_ID.NEXTVAL,#{s_id},#{w_date},#{w_salary},#{w_performance},#{w_overtime},#{w_reward_punish},#{w_social_security},#{w_last_pay},#{w_state})
+    </insert>
+    <update id="updateWage">
+        UPDATE T_WAGE SET W_STATE=#{w_state} WHERE W_ID=#{w_id}
+    </update>
+    <select id="queryWage" resultType="Wage">
+        SELECT * FROM T_WAGE
+        <where>
+            <if test="w_id!=null">
+                AND W_ID=#{w_id}
+            </if>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="w_date!=null">
+                AND W_DATE=#{w_date}
+            </if>
+        </where>
+    </select>
+</mapper>
