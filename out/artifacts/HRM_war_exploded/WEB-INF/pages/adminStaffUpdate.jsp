@@ -85,6 +85,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -101,12 +103,14 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <a class="" href="javascript:;">员工管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="adminDepartmentShow">部门管理</a></dd>
-                    <dd><a href="adminPositionShow">职位管理</a></dd>
-                    <dd><a href="adminStaffShow">员工管理</a></dd>
-                </dl>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">员工管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="adminDepartmentShow">部门管理</a></dd>
+                        <dd><a href="adminPositionShow">职位管理</a></dd>
+                        <dd><a href="adminStaffShow">员工管理</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>
@@ -214,7 +218,7 @@
                 <input hidden name="s_id" value="${requestScope.staff.s_id}"/>
             </td>
             <td>
-                <input type="submit" value="修改">
+                <input class="layui-btn layui-btn-sm" type="submit" value="修改">
             </td>
         </tr>
     </table>

@@ -66,9 +66,13 @@
                         <table cellspacing="0px">
                             <tr>
                                 <td>${departmentList[loop.count-1].d_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${positionList[loop.count-1].p_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${s.s_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${s.s_phone}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>
                                     <c:if test="${s.s_state==0}">试用</c:if>
                                     <c:if test="${s.s_state==1}">在职</c:if>
@@ -76,7 +80,7 @@
                                     <c:if test="${s.s_state==-1}">离职</c:if>
                                 </td>
                                 <td style="text-align: right">
-                                    <a href="adminStaffUpdate?s_id=${s.s_id}">管理</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminStaffUpdate?s_id=${s.s_id}">管理</a>
                                 </td>
                             </tr>
                         </table>
@@ -86,7 +90,8 @@
             <c:if test="${requestScope.totalPages > 0}">
                 <table>
                     <tr>
-                        <td><a class="layui-btn layui-btn-sm" href="adminStaffShow?currentPage=1">首页</a></td>
+                        <td><a class="layui-btn layui-btn-sm"
+                               href="adminStaffShow?currentPage=1">首页</a></td>
                         <c:if test="${requestScope.currentPage != 1}">
                             <td><a class="layui-btn layui-btn-sm"
                                    href="adminStaffShow?currentPage=${requestScope.currentPage - 1}"><</a></td>

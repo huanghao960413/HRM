@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -57,7 +59,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <a href="adminTrainAdd">新增</a>
+            <a class="layui-btn layui-btn-sm" href="adminTrainAdd">新增</a>
             <c:if test="${requestScope.trainList != null}">
                 <c:forEach items="${requestScope.trainList}" var="t">
                     <div style="border:1px dashed #000">
@@ -78,8 +80,8 @@
                                 <td></td>
                                 <td></td>
                                 <td style="text-align: right">
-                                    <a href="adminTrainUpdate?t_id=${t.t_id}">修改</a>/
-                                    <a href="adminTrainDel?t_id=${t.t_id}">删除</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminTrainUpdate?t_id=${t.t_id}">修改</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminTrainDel?t_id=${t.t_id}">删除</a>
                                 </td>
                             </tr>
                         </table>
@@ -89,7 +91,8 @@
             <c:if test="${requestScope.totalPages > 0}">
                 <table>
                     <tr>
-                        <td><a class="layui-btn layui-btn-sm" href="adminTrainShow?currentPage=1">首页</a></td>
+                        <td><a class="layui-btn layui-btn-sm"
+                               href="adminTrainShow?currentPage=1">首页</a></td>
                         <c:if test="${requestScope.currentPage != 1}">
                             <td><a class="layui-btn layui-btn-sm"
                                    href="adminTrainShow?currentPage=${requestScope.currentPage - 1}"><</a></td>

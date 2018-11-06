@@ -103,14 +103,21 @@ public class AdminRecruitFlowController {
         recruitFlow.setS_id(s_id);
         recruitFlow.setRf_time(rf_time);
         recruitFlow.setRf_state(1);
-        if (recruitFlowService.updateRecruitFlow(recruitFlow) < 1) {
-            request.setAttribute("msg", "操作失败");
+        int result = recruitFlowService.updateRecruitFlow(recruitFlow);
+        if (result < 1) {
+            if (result == 0) {
+                request.setAttribute("msg", "操作失败");
+            }
+            if (result == -1) {
+                request.setAttribute("msg", "日期至少为明天");
+            }
+            request.setAttribute("rf_id", rf_id);
             return "adminRecruitFlowInterview";
         }
         return "redirect:adminIndex";
     }
 
-    //进入录取页面
+    //进入录用页面
     @RequestMapping("/adminRecruitFlowEmploy")
     public String adminRecruitFlowEmploy(HttpServletRequest request) throws Exception {
         Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
@@ -127,20 +134,6 @@ public class AdminRecruitFlowController {
         request.setAttribute("information", information);
         request.setAttribute("rf_id", rf_id);
         return "adminRecruitFlowEmploy";
-    }
-
-    //根据投递id录取员工
-    @RequestMapping("/adminRecruitFlowEmployDo")
-    public String adminRecruitFlowEmployDo(Staff staff, HttpServletRequest request) throws Exception {
-        if (staffService.addStaff(staff) < 1) {
-            request.setAttribute("msg", "操作失败");
-            return "adminRecruitFlowEmploy";
-        }
-        Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
-        RecruitFlow recruitFlow = recruitFlowService.queryRecruitFlow(new RecruitFlow(rf_id));
-        recruitFlow.setRf_state(3);
-        recruitFlowService.updateRecruitFlow(recruitFlow);
-        return "redirect:adminIndex";
     }
 
 }

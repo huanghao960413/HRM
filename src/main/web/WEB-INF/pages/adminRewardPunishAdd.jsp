@@ -160,7 +160,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="新增"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="新增"></td>
                     </tr>
                 </table>
             </form>

@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -64,9 +66,13 @@
                         <table cellspacing="0px">
                             <tr>
                                 <td>${departmentList[loop.count-1].d_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${positionList[loop.count-1].p_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${s.s_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${s.s_phone}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>
                                     <c:if test="${s.s_state==0}">试用</c:if>
                                     <c:if test="${s.s_state==1}">在职</c:if>
@@ -74,7 +80,7 @@
                                     <c:if test="${s.s_state==-1}">离职</c:if>
                                 </td>
                                 <td style="text-align: right">
-                                    <a href="adminStaffUpdate?s_id=${s.s_id}">管理</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminStaffUpdate?s_id=${s.s_id}">管理</a>
                                 </td>
                             </tr>
                         </table>
@@ -84,7 +90,8 @@
             <c:if test="${requestScope.totalPages > 0}">
                 <table>
                     <tr>
-                        <td><a class="layui-btn layui-btn-sm" href="adminStaffShow?currentPage=1">首页</a></td>
+                        <td><a class="layui-btn layui-btn-sm"
+                               href="adminStaffShow?currentPage=1">首页</a></td>
                         <c:if test="${requestScope.currentPage != 1}">
                             <td><a class="layui-btn layui-btn-sm"
                                    href="adminStaffShow?currentPage=${requestScope.currentPage - 1}"><</a></td>

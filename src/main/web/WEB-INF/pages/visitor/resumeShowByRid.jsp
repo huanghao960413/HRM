@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../../layui/css/layui.css" media="all">
     <style>
         .td1 {
-            width: 10%;
+            width: 15%;
         }
     </style>
 </head>

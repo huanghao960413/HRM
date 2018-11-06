@@ -60,6 +60,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -79,7 +81,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">投递管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="adminRecruitFlowShow">招聘信息</a></dd>
+                        <dd><a href="adminIndex">招聘信息</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -89,7 +91,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <form action="adminRecruitFlowEmployDo" method="post">
+            <form action="adminStaffEmployDo" method="post">
                 <table>
                     <tr>
                         <td>姓名:</td>
@@ -140,8 +142,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td></td>
+                        <td style="color: red">${requestScope.msg}</td>
+                    </tr>
+                    <tr>
                         <td><input type="hidden" name="rf_id" value="${requestScope.rf_id}"></td>
-                        <td><input type="submit" value="录用"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="录用"></td>
                     </tr>
                 </table>
             </form>

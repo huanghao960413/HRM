@@ -11,7 +11,15 @@
         DELETE FROM T_DEPARTMENT WHERE D_ID=#{d_id}
     </delete>
     <select id="queryDepartment" resultType="Department">
-        SELECT * FROM T_DEPARTMENT WHERE D_ID=#{d_id}
+        SELECT * FROM T_DEPARTMENT
+        <where>
+            <if test="d_id!=null">
+                AND D_ID=#{d_id}
+            </if>
+            <if test="d_name!=null">
+                AND D_NAME=#{d_name}
+            </if>
+        </where>
     </select>
     <select id="queryDepartmentList" resultType="Department">
         SELECT * FROM T_DEPARTMENT

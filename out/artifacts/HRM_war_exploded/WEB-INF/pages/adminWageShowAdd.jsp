@@ -86,8 +86,12 @@
                         <td><input type="text" name="w_social_security" value="${requestScope.wage.w_social_security}"></td>
                     </tr>
                     <tr>
+                        <td></td>
+                        <td style="color: red">${requestScope.msg}</td>
+                    </tr>
+                    <tr>
                         <td><input hidden name="s_id" value="${requestScope.s_id}"></td>
-                        <td><input type="submit" value="结算"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="结算"></td>
                     </tr>
                 </table>
             </form>

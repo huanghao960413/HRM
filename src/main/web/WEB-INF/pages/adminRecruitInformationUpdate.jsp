@@ -111,7 +111,7 @@
                     </tr>
                     <tr>
                         <td><input hidden name="ri_id" value="${requestScope.information.ri_id}"></td>
-                        <td><input type="submit" value="修改"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="修改"></td>
                     </tr>
                 </table>
             </form>

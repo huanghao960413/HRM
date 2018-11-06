@@ -16,7 +16,7 @@
     <title>管理员登录</title>
     <style>
         html {
-            background-color: #B5DEF2;
+            background-color: white;
         }
 
         .wrapper {

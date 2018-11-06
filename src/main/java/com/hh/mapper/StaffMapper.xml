@@ -48,7 +48,7 @@
         SELECT * FROM T_STAFF
         <where>
             <if test="s_id!=null">
-                S_ID=#{s_id}
+                AND S_ID=#{s_id}
             </if>
             <if test="s_name!=null">
                 AND S_NAME=#{s_name}

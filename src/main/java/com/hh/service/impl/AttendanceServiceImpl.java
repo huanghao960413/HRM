@@ -68,7 +68,10 @@ public class AttendanceServiceImpl implements AttendanceService {
                     rewardPunishDao.updateRewardPunish(rewardPunish);
                 } else {
                     attendance.setA_state(4);
-                    rewardPunishDao.delRewardPunish(rewardPunishDao.queryRewardPunish(new RewardPunish(attendance.getS_id(), attendance.getA_date())));
+                    System.out.println(attendance);
+                    RewardPunish rewardPunish = rewardPunishDao.queryRewardPunish(new RewardPunish(attendance.getS_id(), attendance.getA_date()));
+                    System.out.println(rewardPunish);
+                    rewardPunishDao.delRewardPunish(rewardPunish);
                 }
             }
         }

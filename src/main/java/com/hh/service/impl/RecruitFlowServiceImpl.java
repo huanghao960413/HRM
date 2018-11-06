@@ -5,6 +5,7 @@ import com.hh.dao.ResumeDao;
 import com.hh.model.RecruitFlow;
 import com.hh.model.Resume;
 import com.hh.service.RecruitFlowService;
+import com.hh.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +48,10 @@ public class RecruitFlowServiceImpl implements RecruitFlowService {
             return 0;
         }
         if (recruitFlow.getRf_state() == 1) {
-            
+            int day = DateUtil.differentDays(DateUtil.getDate(),recruitFlow.getRf_time());
+            if (day < 0) {
+                return -1;
+            }
         }
         return recruitFlowDao.updateRecruitFlow(recruitFlow);
     }

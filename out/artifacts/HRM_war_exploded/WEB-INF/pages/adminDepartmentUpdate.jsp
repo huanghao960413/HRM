@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -77,7 +79,7 @@
         </tr>
         <tr>
             <td><input hidden name="d_id" value="${requestScope.department.d_id}"></td>
-            <td><input type="submit" value="修改"></td>
+            <td><input class="layui-btn layui-btn-sm" type="submit" value="修改"></td>
         </tr>
     </table>
 </form>

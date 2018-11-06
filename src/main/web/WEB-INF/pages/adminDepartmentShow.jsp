@@ -60,17 +60,19 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <a href="adminDepartmentAdd">新增</a>
+            <a class="layui-btn layui-btn-sm" href="adminDepartmentAdd">新增</a>
             <c:if test="${requestScope.departmentList != null}">
                 <c:forEach items="${requestScope.departmentList}" var="d">
                     <div style="border:1px dashed #000">
                         <table cellspacing="0px">
                             <tr>
                                 <td>${d.d_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${d.d_time}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td style="text-align: right">
-                                    <a href="adminDepartmentUpdate?d_id=${d.d_id}">修改</a>/
-                                    <a href="adminDepartmentDel?d_id=${d.d_id}">删除</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminDepartmentUpdate?d_id=${d.d_id}">修改</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminDepartmentDel?d_id=${d.d_id}">删除</a>
                                 </td>
                             </tr>
                         </table>
@@ -80,17 +82,22 @@
             <c:if test="${requestScope.totalPages > 0}">
                 <table>
                     <tr>
-                        <td><a class="layui-btn layui-btn-sm" href="adminDepartmentShow?currentPage=1">首页</a></td>
+                        <td><a class="layui-btn layui-btn-sm"
+                               href="adminDepartmentShow?currentPage=1">首页</a></td>
                         <c:if test="${requestScope.currentPage != 1}">
-                            <td><a class="layui-btn layui-btn-sm" href="adminDepartmentShow?currentPage=${requestScope.currentPage - 1}"><</a></td>
+                            <td><a class="layui-btn layui-btn-sm"
+                                   href="adminDepartmentShow?currentPage=${requestScope.currentPage - 1}"><</a></td>
                         </c:if>
                         <c:forEach var="i" begin="1" end="${requestScope.totalPages}">
-                            <td><a class="layui-btn layui-btn-sm" href="adminDepartmentShow?currentPage=${i}">${i}</a></td>
+                            <td><a class="layui-btn layui-btn-sm" href="adminDepartmentShow?currentPage=${i}">${i}</a>
+                            </td>
                         </c:forEach>
                         <c:if test="${requestScope.currentPage != requestScope.totalPages}">
-                            <td><a class="layui-btn layui-btn-sm" href="adminDepartmentShow?currentPage=${requestScope.currentPage + 1}">></a></td>
+                            <td><a class="layui-btn layui-btn-sm"
+                                   href="adminDepartmentShow?currentPage=${requestScope.currentPage + 1}">></a></td>
                         </c:if>
-                        <td><a class="layui-btn layui-btn-sm" href="adminDepartmentShow?currentPage=${requestScope.totalPages}">尾页</a></td>
+                        <td><a class="layui-btn layui-btn-sm"
+                               href="adminDepartmentShow?currentPage=${requestScope.totalPages}">尾页</a></td>
                     </tr>
                 </table>
             </c:if>

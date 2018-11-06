@@ -27,7 +27,10 @@ public class WageServiceImpl implements WageService {
             return 0;
         }
         if (wageDao.queryWage(wage) != null) {
-            return 0;
+            return -1;
+        }
+        if (DateUtil.getYearMonth().compareTo(wage.getW_date()) < 1) {
+            return -2;
         }
         wage.setW_last_pay(wage.getW_salary() + wage.getW_performance() + wage.getW_overtime() +
                 wage.getW_reward_punish() - wage.getW_social_security());

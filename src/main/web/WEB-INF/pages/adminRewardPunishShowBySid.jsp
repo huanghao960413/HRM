@@ -134,7 +134,7 @@
                             <td>&nbsp;&nbsp;</td>
                             <td>${rp.rp_state==0?"惩罚":"奖励"}</td>
                             <td>&nbsp;&nbsp;</td>
-                            <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="">删除</a></td>
+                            <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="adminRewardPunishDel?rp_id=${rp.rp_id}&s_id=${rp.s_id}&rp_date=${rp.rp_date}">删除</a></td>
                         </tr>
                     </c:forEach>
                 </table>

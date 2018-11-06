@@ -73,4 +73,24 @@ public class AdminStaffController {
         return "redirect:adminStaffShow";
     }
 
+
+    //根据投递id录用员工
+    @RequestMapping("/adminStaffEmployDo")
+    public String adminStaffEmployDo(Staff staff, HttpServletRequest request) throws Exception {
+        Integer rf_id = Integer.valueOf(request.getParameter("rf_id"));
+        int result = staffService.addStaff(staff, rf_id);
+        if (result < 1) {
+            if (result == 0) {
+                request.setAttribute("msg", "操作失败");
+            }
+            if (result == -1) {
+                request.setAttribute("msg", "已有此账户!");
+            }
+            request.setAttribute("rf_id", rf_id);
+            return "adminRecruitFlowEmploy";
+        }
+        return "redirect:adminIndex";
+    }
+
+
 }

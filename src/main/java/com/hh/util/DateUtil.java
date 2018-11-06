@@ -72,7 +72,7 @@ public class DateUtil {
      * @return
      */
     public static int differentDays(String date1, String date2) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date d1 = df.parse(date1);
             Date d2 = df.parse(date2);

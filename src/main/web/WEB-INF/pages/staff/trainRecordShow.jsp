@@ -25,8 +25,9 @@
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="staff/index">首页</a></li>
             <li class="layui-nav-item"><a href="staff/staffShow">通讯录</a></li>
-            <li class="layui-nav-item"><a href="">员工培训</a></li>
-            <li class="layui-nav-item"><a href="">上月薪资</a></li>
+            <li class="layui-nav-item"><a href="staff/trainRecordShow">员工培训</a></li>
+            <li class="layui-nav-item"><a href="staff/rewardPunishShow">奖惩记录</a></li>
+            <li class="layui-nav-item"><a href="staff/wageShow">员工薪资</a></li>
             <li class="layui-nav-item"><a class="layui-btn layui-btn-sm" href="staff/attendanceAdd"
                                           onclick="return add()">打卡</a></li>
         </ul>
@@ -65,22 +66,18 @@
                         <table cellspacing="0px">
                             <tr>
                                 <td>${t.t_name}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td style="text-align: right">${t.t_start_time}-${t.t_over_time}</td>
+                                <td>&nbsp;&nbsp;</td>
+                                <td style="text-align: right">${t.t_start_time}~${t.t_over_time}</td>
                             </tr>
                             <tr>
-                                <td colspan="5">${t.t_message}</td>
+                                <td colspan="3">${t.t_message}</td>
                             </tr>
                             <tr>
-                                <td colspan="5"></td>
+                                <td colspan="3"></td>
                             </tr>
                             <tr>
                                 <td>${requestScope.recordList[loop.count-1].tr_score}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td style="text-align: right">
                                     <c:if test="${requestScope.recordList[loop.count-1].tr_state==0}">
                                         培训中

@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -63,21 +65,17 @@
                         <table cellspacing="0px">
                             <tr>
                                 <td>${t.t_name}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td style="text-align: right">${t.t_start_time}-${t.t_over_time}</td>
+                                <td>&nbsp;&nbsp;</td>
+                                <td style="text-align: right">${t.t_start_time}~${t.t_over_time}</td>
                             </tr>
                             <tr>
                                 <td colspan="5">${t.t_message}</td>
                             </tr>
                             <tr>
                                 <td>${t.t_address}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td style="text-align: right">
-                                    <a href="adminTrainRecordShowByTid?t_id=${t.t_id}">管理培训员工</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminTrainRecordShowByTid?t_id=${t.t_id}">管理培训员工</a>
                                 </td>
                             </tr>
                         </table>
@@ -87,7 +85,8 @@
             <c:if test="${requestScope.totalPages > 0}">
                 <table>
                     <tr>
-                        <td><a class="layui-btn layui-btn-sm" href="adminTrainRecordShow?currentPage=1">首页</a></td>
+                        <td><a class="layui-btn layui-btn-sm"
+                               href="adminTrainRecordShow?currentPage=1">首页</a></td>
                         <c:if test="${requestScope.currentPage != 1}">
                             <td><a class="layui-btn layui-btn-sm"
                                    href="adminTrainRecordShow?currentPage=${requestScope.currentPage - 1}"><</a></td>

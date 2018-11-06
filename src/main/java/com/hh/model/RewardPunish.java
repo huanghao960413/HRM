@@ -75,4 +75,16 @@ public class RewardPunish {
     public void setRp_state(Integer rp_state) {
         this.rp_state = rp_state;
     }
+
+    @Override
+    public String toString() {
+        return "RewardPunish{" +
+                "rp_id=" + rp_id +
+                ", s_id=" + s_id +
+                ", rp_date='" + rp_date + '\'' +
+                ", rp_message='" + rp_message + '\'' +
+                ", rp_money=" + rp_money +
+                ", rp_state=" + rp_state +
+                '}';
+    }
 }

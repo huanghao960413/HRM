@@ -60,17 +60,19 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <a href="adminPositionAdd">新增</a>
+            <a class="layui-btn layui-btn-sm" href="adminPositionAdd">新增</a>
             <c:if test="${requestScope.positionList != null}">
                 <c:forEach items="${requestScope.positionList}" var="p" varStatus="loop">
                     <div style="border:1px dashed #000">
                         <table cellspacing="0px">
                             <tr>
                                 <td>${departmentList[loop.count-1].d_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${p.p_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td style="text-align: right">
-                                    <a href="adminPositionUpdate?p_id=${p.p_id}">修改</a>/
-                                    <a href="adminPositionDel?p_id=${p.p_id}">删除</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminPositionUpdate?p_id=${p.p_id}">修改</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminPositionDel?p_id=${p.p_id}">删除</a>
                                 </td>
                             </tr>
                         </table>

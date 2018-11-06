@@ -11,7 +11,15 @@
         DELETE FROM T_POSITION WHERE P_ID=#{p_id}
     </delete>
     <select id="queryPosition" resultType="Position">
-        SELECT * FROM T_POSITION WHERE P_ID=#{p_id}
+        SELECT * FROM T_POSITION
+        <where>
+            <if test="p_id!=null">
+                AND P_ID=#{p_id}
+            </if>
+            <if test="p_name!=null">
+                AND P_NAME=#{p_name}
+            </if>
+        </where>
     </select>
     <select id="queryPositionList" resultType="Position">
         SELECT * FROM T_POSITION

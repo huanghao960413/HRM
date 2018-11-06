@@ -46,24 +46,29 @@ public class AdminPositionController {
         return "adminPositionShow";
     }
 
-    //新增部门页面
+    //新增职位页面
     @RequestMapping("/adminPositionAdd")
     public String adminPositionAdd() throws Exception {
         return "adminPositionAdd";
     }
 
-    //新增部门
+    //新增职位
     @RequestMapping("/adminPositionAddDo")
     public String adminPositionAddDo(Position position, HttpServletRequest request) throws Exception {
         Integer result = positionService.addPosition(position);
         if (result < 1) {
-            request.setAttribute("msg", "新增失败");
+            if (result == 0) {
+                request.setAttribute("msg", "新增失败");
+            }
+            if (result == -1) {
+                request.setAttribute("msg","已有此职位");
+            }
             return "adminPositionAdd";
         }
         return "redirect:adminPositionShow";
     }
 
-    //删除部门
+    //删除职位
     @RequestMapping("/adminPositionDel")
     public String adminPositionDel(HttpServletRequest request) throws Exception {
         Integer p_id = Integer.valueOf(request.getParameter("p_id"));
@@ -71,7 +76,7 @@ public class AdminPositionController {
         return "redirect:adminPositionShow";
     }
 
-    //修改部门页面
+    //修改职位页面
     @RequestMapping("/adminPositionUpdate")
     public String adminPositionUpdate(HttpServletRequest request) throws Exception {
         Integer p_id = Integer.valueOf(request.getParameter("p_id"));
@@ -80,7 +85,7 @@ public class AdminPositionController {
         return "adminPositionUpdate";
     }
 
-    //修改部门
+    //修改职位
     @RequestMapping("/adminPositionUpdateDo")
     public String adminPositionUpdateDo(Position position, HttpServletRequest request) throws Exception {
         Integer result = positionService.updatePosition(position);

@@ -18,6 +18,9 @@ public class TrainRecordServiceImpl implements TrainRecordService {
         if (trainRecord == null) {
             return 0;
         }
+        if (trainRecordDao.queryTrainRecord(trainRecord) != null) {
+            return -1;
+        }
         return trainRecordDao.addTrainRecord(trainRecord);
     }
 

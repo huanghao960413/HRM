@@ -36,11 +36,16 @@ public class StaffController {
         }
     }
 
+    //查看员工
     @RequestMapping("/staffShow")
-    public String staffShow(HttpSession session) throws Exception {
+    public String staffShow(HttpServletRequest request, HttpSession session) throws Exception {
         Staff staff = (Staff) session.getAttribute("staff");
         if (staff == null) {
             return "redirect:/staff/login";
+        }
+        if (request.getParameter("s_id") != null) {
+            Staff showStaff = staffService.queryStaff(new Staff(Integer.valueOf(request.getParameter("s_id"))));
+            request.setAttribute("showStaff", showStaff);
         }
         return "staff/staffShow";
     }

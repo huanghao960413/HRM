@@ -26,7 +26,18 @@
         DELETE FROM T_TRAIN_RECORD WHERE TR_ID=#{tr_id}
     </delete>
     <select id="queryTrainRecord" resultType="TrainRecord">
-        SELECT * FROM T_TRAIN_RECORD WHERE TR_ID=#{tr_id}
+        SELECT * FROM T_TRAIN_RECORD
+        <where>
+            <if test="tr_id!=null">
+                AND TR_ID=#{tr_id}
+            </if>
+            <if test="t_id!=null">
+                AND T_ID=#{t_id}
+            </if>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+        </where>
     </select>
     <select id="queryTrainRecordList" resultType="TrainRecord">
         SELECT * FROM T_TRAIN_RECORD

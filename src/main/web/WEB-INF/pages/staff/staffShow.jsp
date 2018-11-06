@@ -25,7 +25,7 @@
                 async: false,
                 success: function (departmentList) {
                     $("#department").empty();// jq写法 清除部门下拉框的所有内容，然后拼接上从后台取出来的数据
-                    $("<option value=''>--请选择--</option>").appendTo("#department");
+                    $("<option value='-1'>--请选择--</option>").appendTo("#department");
                     for (var i = 0; i < departmentList.length; i++) {//获取departmentList里面的数据，拼接到select上
                         $("#department").append("<option value='" + departmentList[i].d_id + "'>" + departmentList[i].d_name + "</option>");
                     }
@@ -33,9 +33,9 @@
             });
             $("#department").change(function () {
                 $("#position").empty();// jq写法 清除职位下拉框的所有内容，然后拼接上从后台取出来的数据
-                $("<option value=''>--请选择--</option>").appendTo("#position");
+                $("<option value='-1'>--请选择--</option>").appendTo("#position");
                 $("#staff").empty();
-                $("<option value=''>--请选择--</option>").appendTo("#staff");
+                $("<option value='-1'>--请选择--</option>").appendTo("#staff");
                 $.ajax({
                     url: "ajaxPosition",
                     type: "get",
@@ -51,7 +51,7 @@
             });
             $("#position").change(function () {
                 $("#staff").empty();//清除下拉列表的内容
-                $("<option value=''>--请选择--</option>").appendTo("#staff");
+                $("<option value='-1'>--请选择--</option>").appendTo("#staff");
                 $.ajax({
                     url: "ajaxStaff",
                     type: "get",
@@ -77,14 +77,18 @@
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="staff/index">首页</a></li>
             <li class="layui-nav-item"><a href="staff/staffShow">通讯录</a></li>
-            <li class="layui-nav-item"><a href="">员工培训</a></li>
-            <li class="layui-nav-item"><a href="">上月薪资</a></li>
+            <li class="layui-nav-item"><a href="staff/trainRecordShow">员工培训</a></li>
+            <li class="layui-nav-item"><a href="staff/rewardPunishShow">奖惩记录</a></li>
+            <li class="layui-nav-item"><a href="staff/wageShow">员工薪资</a></li>
+            <li class="layui-nav-item"><a class="layui-btn layui-btn-sm" href="staff/attendanceAdd"
+                                          onclick="return add()">打卡</a></li>
         </ul>
+
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a>
                     <img src="../../../layui/images/face/5.gif" class="layui-nav-img">
-                    ${sessionScope.visitor.v_name}
+                    ${sessionScope.staff.s_name}
                 </a>
             </li>
             <li class="layui-nav-item"><a href="">退出</a></li>
@@ -98,6 +102,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">通讯录</a>
                     <dl class="layui-nav-child">
+                        <dd><a href="staff/staffShow">通讯录</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -107,32 +112,56 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <table>
-                <tr>
-                    <td>部门:</td>
-                    <td>
-                        <select id="department">
-                            <option value="">--请选择--</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>职位:</td>
-                    <td>
-                        <select id="position">
-                            <option value="">--请选择--</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>员工:</td>
-                    <td>
-                        <select name="s_id" id="staff">
-                            <option value="">--请选择--</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+            <form action="staff/staffShow" method="post">
+                <table>
+                    <tr>
+                        <td>部门:</td>
+                        <td>
+                            <select id="department">
+                                <option value="">--请选择--</option>
+                            </select>
+                        </td>
+                        <td>职位:</td>
+                        <td>
+                            <select id="position">
+                                <option value="">--请选择--</option>
+                            </select>
+                        </td>
+                        <td>员工:</td>
+                        <td>
+                            <select name="s_id" id="staff">
+                                <option value="-1">--请选择--</option>
+                            </select>
+                        </td>
+                        <td></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="查询"></td>
+                    </tr>
+                </table>
+            </form>
+            <c:if test="${requestScope.showStaff!=null}">
+                <table>
+                    <tr>
+                        <td>姓名:</td>
+                        <td>${requestScope.showStaff.s_full_name}</td>
+                    </tr>
+                    <tr>
+                        <td>性别:</td>
+                        <td>${requestScope.showStaff.s_sex}</td>
+                    </tr>
+                    <tr>
+                        <td>年龄:</td>
+                        <td>${requestScope.showStaff.s_age}</td>
+                    </tr>
+                    <tr>
+                        <td>联系方式:</td>
+                        <td>${requestScope.showStaff.s_phone}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>${requestScope.showStaff.s_email}</td>
+                    </tr>
+                </table>
+            </c:if>
         </div>
     </div>
 

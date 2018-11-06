@@ -101,10 +101,6 @@ public class AdminTrainRecordController {
         } else {
             result = trainRecordService.addTrainRecord(new TrainRecord(t_id, Integer.valueOf(request.getParameter("s_id"))));
         }
-        if (result < 1) {
-            request.setAttribute("msg", "新增失败");
-            return "adminTrainRecordAdd";
-        }
         return "redirect:adminTrainRecordShow";
     }
 
@@ -115,25 +111,5 @@ public class AdminTrainRecordController {
         trainRecordService.delTrainRecord(new TrainRecord(tr_id));
         return "redirect:adminTrainRecordShow";
     }
-
-//    //修改员工培训页面
-//    @RequestMapping("/adminTrainRecordUpdate")
-//    public String adminTrainRecordUpdate(HttpServletRequest request) throws Exception {
-//        Integer tr_id = Integer.valueOf(request.getParameter("tr_id"));
-//        TrainRecord trainRecord = trainRecordService.queryTrainRecord(new TrainRecord(tr_id));
-//        request.setAttribute("trainRecord", trainRecord);
-//        return "adminTrainRecordUpdate";
-//    }
-//
-//    //修改员工培训
-//    @RequestMapping("/adminTrainRecordUpdateDo")
-//    public String adminTrainRecordUpdateDo(TrainRecord trainRecord, HttpServletRequest request) throws Exception {
-//        Integer result = trainRecordService.updateTrainRecord(trainRecord);
-//        if (result < 1) {
-//            request.setAttribute("msg", "修改失败");
-//            return "adminTrainRecordUpdate";
-//        }
-//        return "redirect:adminTrainRecordShow";
-//    }
 
 }

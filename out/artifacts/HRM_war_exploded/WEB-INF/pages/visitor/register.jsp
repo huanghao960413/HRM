@@ -82,7 +82,7 @@
     </script>
     <style>
         html {
-            background-color: #B5DEF2;
+            background-color: white;
         }
 
         .wrapper {

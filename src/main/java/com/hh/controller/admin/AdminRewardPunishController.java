@@ -46,8 +46,12 @@ public class AdminRewardPunishController {
     @RequestMapping("/adminRewardPunishDel")
     public String adminRewardPunishDel(HttpServletRequest request) throws Exception {
         Integer rp_id = Integer.valueOf(request.getParameter("rp_id"));
+        Integer s_id = Integer.valueOf(request.getParameter("s_id"));
+        String rp_date = request.getParameter("rp_date");
         rewardPunishService.delRewardPunish(new RewardPunish(rp_id));
-        return "redirect:adminRewardPunishShow";
+        request.setAttribute("s_id",s_id);
+        request.setAttribute("rp_date",rp_date);
+        return "forward:adminRewardPunishShowBySid";
     }
 
 }

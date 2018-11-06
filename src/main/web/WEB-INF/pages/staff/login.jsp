@@ -16,7 +16,7 @@
     <title>员工</title>
     <style>
         html {
-            background-color: #B5DEF2;
+            background-color: white;
         }
 
         .wrapper {

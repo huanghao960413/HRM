@@ -15,6 +15,11 @@
     <base href="<%=basePath%>"/>
     <title>查看简历</title>
     <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
+    <style>
+        .td1 {
+            width: 15%;
+        }
+    </style>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -26,6 +31,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -56,7 +63,7 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <span>简历标题:${requestScope.resume.r_title}</span>
-            <table border="1" cellspacing="0">
+            <table border="1">
                 <tr>
                     <td>基本信息</td>
                     <td colspan="5">
@@ -65,11 +72,11 @@
                 </tr>
                 <tr>
                     <td>*姓名:</td>
-                    <td>${requestScope.resume.r_name}</td>
+                    <td class="td1">${requestScope.resume.r_name}</td>
                     <td>*性别:</td>
-                    <td>${requestScope.resume.r_sex}</td>
+                    <td class="td1">${requestScope.resume.r_sex}</td>
                     <td>*年龄:</td>
-                    <td>${requestScope.resume.r_age}</td>
+                    <td class="td1">${requestScope.resume.r_age}</td>
                 </tr>
                 <tr>
                     <td>*所在地:</td>
@@ -91,11 +98,11 @@
                 </tr>
                 <tr>
                     <td>毕业院校:</td>
-                    <td>${requestScope.resume.r_school}</td>
+                    <td class="td1">${requestScope.resume.r_school}</td>
                     <td>专业:</td>
-                    <td>${requestScope.resume.r_major}</td>
+                    <td class="td1">${requestScope.resume.r_major}</td>
                     <td>学历:</td>
-                    <td>${requestScope.resume.r_education}</td>
+                    <td class="td1">${requestScope.resume.r_education}</td>
                 </tr>
                 <tr>
                     <td>时间:</td>
@@ -113,7 +120,7 @@
                 </tr>
                 <tr>
                     <td>职位:</td>
-                    <td>${requestScope.resume.r_worker}</td>
+                    <td class="td1">${requestScope.resume.r_worker}</td>
                     <td>职责:</td>
                     <td colspan="3">${requestScope.resume.r_worker_experience}</td>
                 </tr>

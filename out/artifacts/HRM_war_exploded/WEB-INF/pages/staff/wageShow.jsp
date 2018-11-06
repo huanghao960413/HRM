@@ -34,7 +34,7 @@
             <li class="layui-nav-item"><a href="staff/staffShow">通讯录</a></li>
             <li class="layui-nav-item"><a href="staff/trainRecordShow">员工培训</a></li>
             <li class="layui-nav-item"><a href="staff/rewardPunishShow">奖惩记录</a></li>
-            <li class="layui-nav-item"><a href="staff/wageShow">上月薪资</a></li>
+            <li class="layui-nav-item"><a href="staff/wageShow">员工薪资</a></li>
             <li class="layui-nav-item"><a class="layui-btn layui-btn-sm" href="staff/attendanceAdd"
                                           onclick="return add()">打卡</a></li>
         </ul>
@@ -67,20 +67,18 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <div style="padding: 15px;">
-                <form action="/staff/wageShowByDate" method="post">
-                    <table>
-                        <tr>
-                            <td>月份:</td>
-                            <td><input type="month" name="w_date"/></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" value="查询"></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+            <form action="/staff/wageShowByDate" method="post">
+                <table>
+                    <tr>
+                        <td>月份:</td>
+                        <td><input type="month" name="w_date"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="查询"></td>
+                    </tr>
+                </table>
+            </form>
         </div>
 
         <div class="layui-footer">

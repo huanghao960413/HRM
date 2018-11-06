@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -57,18 +59,21 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <a href="adminTrainRecordAdd?t_id=${requestScope.t_id}">新增员工培训</a>
+            <a class="layui-btn layui-btn-sm" href="adminTrainRecordAdd?t_id=${requestScope.t_id}">新增员工培训</a>
             <c:if test="${requestScope.recordList!=null}">
                 <c:forEach items="${requestScope.recordList}" var="r" varStatus="loop">
                     <div style="border:1px dashed #000">
                         <table cellspacing="0px">
                             <tr>
                                 <td>${requestScope.staffList[loop.count-1].s_name}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${requestScope.staffList[loop.count-1].s_phone}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td>${r.tr_score}</td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td style="text-align: right">
                                     <c:if test="${r.tr_state==0}">
-                                        <a href="adminTrainRecordDel?tr_id=${r.tr_id}">删除培训</a>
+                                        <a class="layui-btn layui-btn-sm" href="adminTrainRecordDel?tr_id=${r.tr_id}">删除培训</a>
                                     </c:if>
                                 </td>
                             </tr>

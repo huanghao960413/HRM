@@ -76,8 +76,8 @@
                                 <td></td>
                                 <td>${i.ri_number}人</td>
                                 <td style="text-align: right">
-                                    <a href="adminRecruitInformationUpdate?ri_id=${i.ri_id}">修改</a>/
-                                    <a href="adminRecruitInformationDel?ri_id=${i.ri_id}">删除</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminRecruitInformationUpdate?ri_id=${i.ri_id}">修改</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminRecruitInformationDel?ri_id=${i.ri_id}">删除</a>
                                 </td>
                             </tr>
                         </table>

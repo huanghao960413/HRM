@@ -23,6 +23,10 @@ public class Staff implements Serializable {
         this.s_id = s_id;
     }
 
+    public Staff(String s_name) {
+        this.s_name = s_name;
+    }
+
     public Staff(String s_name, String s_pass) {
         this.s_name = s_name;
         this.s_pass = s_pass;

@@ -82,12 +82,12 @@
                         <td><input type="text" name="t_address" value="${requestScope.train.t_address}"></td>
                     </tr>
                     <tr>
-                        <td style="color: red">${requestScope.msg}</td>
                         <td></td>
+                        <td style="color: red">${requestScope.msg}</td>
                     </tr>
                     <tr>
                         <td><input hidden name="t_id" value="${requestScope.train.t_id}"></td>
-                        <td><input type="submit" value="修改"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="修改"></td>
                     </tr>
                 </table>
             </form>

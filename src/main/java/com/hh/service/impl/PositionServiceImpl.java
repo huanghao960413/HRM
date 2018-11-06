@@ -1,7 +1,9 @@
 package com.hh.service.impl;
 
 import com.hh.dao.PositionDao;
+import com.hh.dao.StaffDao;
 import com.hh.model.Position;
+import com.hh.model.Staff;
 import com.hh.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +14,15 @@ import java.util.List;
 public class PositionServiceImpl implements PositionService {
     @Autowired
     private PositionDao positionDao;
+    @Autowired
+    private StaffDao staffDao;
 
     public Integer addPosition(Position position) {
         if (position == null) {
             return 0;
+        }
+        if (positionDao.queryPosition(position) != null) {
+            return -1;
         }
         return positionDao.addPosition(position);
     }
@@ -23,6 +30,14 @@ public class PositionServiceImpl implements PositionService {
     public Integer delPosition(Position position) {
         if (position == null) {
             return 0;
+        }
+        Staff queryStaff = new Staff();
+        queryStaff.setP_id(position.getP_id());
+        List<Staff> staffList = staffDao.queryStaffList(queryStaff);
+        for (Staff s : staffList) {
+            if (s.getS_state() != -1) {
+                return -1;
+            }
         }
         return positionDao.delPosition(position);
     }

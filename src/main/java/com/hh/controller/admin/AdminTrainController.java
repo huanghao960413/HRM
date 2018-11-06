@@ -75,7 +75,12 @@ public class AdminTrainController {
     public String adminTrainUpdateDo(Train train, HttpServletRequest request) throws Exception {
         Integer result = trainService.updateTrain(train);
         if (result < 1) {
-            request.setAttribute("msg","修改失败");
+            if (result == 0) {
+                request.setAttribute("msg","修改失败");
+            }
+            if (result == -1) {
+                request.setAttribute("msg","");
+            }
             return "adminTrainUpdate";
         }
         return "redirect:adminTrainShow";

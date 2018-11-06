@@ -74,7 +74,7 @@
                                 <td>${i.ri_education}</td>
                                 <td></td>
                                 <td>${i.ri_number}人</td>
-                                <td style="text-align: right"><a href="adminRecruitFlowShow?ri_id=${i.ri_id}">查看投递</a>
+                                <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="adminRecruitFlowShow?ri_id=${i.ri_id}">查看投递</a>
                                 </td>
                             </tr>
                         </table>

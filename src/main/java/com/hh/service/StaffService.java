@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StaffService {
 
-    Integer addStaff(Staff staff);
+    Integer addStaff(Staff staff,Integer rf_id);
 
     Integer delStaff(Staff staff);
 

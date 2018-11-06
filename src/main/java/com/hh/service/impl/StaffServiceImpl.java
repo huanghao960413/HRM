@@ -1,6 +1,8 @@
 package com.hh.service.impl;
 
+import com.hh.dao.RecruitFlowDao;
 import com.hh.dao.StaffDao;
+import com.hh.model.RecruitFlow;
 import com.hh.model.Staff;
 import com.hh.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,20 @@ import java.util.List;
 public class StaffServiceImpl implements StaffService {
     @Autowired
     private StaffDao staffDao;
+    @Autowired
+    private RecruitFlowDao recruitFlowDao;
 
-    public Integer addStaff(Staff staff) {
+    public Integer addStaff(Staff staff, Integer rf_id) {
         if (staff == null) {
             return 0;
+        }
+        if (staffDao.queryStaff(new Staff(staff.getS_name())) != null) {
+            return -1;
+        }
+        RecruitFlow recruitFlow = recruitFlowDao.queryRecruitFlow(new RecruitFlow(rf_id));
+        recruitFlow.setRf_state(3);
+        if (recruitFlowDao.updateRecruitFlow(recruitFlow) < 1) {
+            return -2;
         }
         return staffDao.addStaff(staff);
     }

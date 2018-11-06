@@ -79,7 +79,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
-            <li class="layui-nav-item"><a href="adminTrainShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -133,7 +134,7 @@
                             <td>&nbsp;&nbsp;</td>
                             <td>${rp.rp_state==0?"惩罚":"奖励"}</td>
                             <td>&nbsp;&nbsp;</td>
-                            <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="">删除</a></td>
+                            <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="adminRewardPunishDel?rp_id=${rp.rp_id}&s_id=${rp.s_id}&rp_date=${rp.rp_date}">删除</a></td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -15,28 +15,6 @@
 <head>
     <base href="<%=basePath%>"/>
     <title>修改职位</title>
-    <script src="js/jquery-3.2.1.js"></script>
-    <script>
-        $(function () {
-            $.ajax({
-                url: "ajaxDepartment",
-                type: "get",
-                dataType: "json", //以json的形式返回，易解析 "json",
-                async: false,
-                success: function (departmentList) {
-                    $("#department").empty();// jq写法 清除部门下拉框的所有内容，然后拼接上从后台取出来的数据
-                    $("<option value=''>--请选择--</option>").appendTo("#department");
-                    for (var i = 0; i < departmentList.length; i++) {//获取departmentList里面的数据，拼接到select上
-                        if (departmentList[i].d_id == ${requestScope.position.d_id}) {
-                            $("#department").append("<option value='" + departmentList[i].d_id + "' selected >" + departmentList[i].d_name + "</option>");
-                        } else {
-                            $("#department").append("<option value='" + departmentList[i].d_id + "'>" + departmentList[i].d_name + "</option>");
-                        }
-                    }
-                },
-            });
-        });
-    </script>
     <link rel="stylesheet" href="../../layui/css/layui.css" media="all">
 </head>
 <body class="layui-layout-body">
@@ -49,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -83,14 +63,6 @@
 <form action="adminPositionUpdateDo" method="post">
     <table cellspacing="0px">
         <tr>
-            <td>部门:</td>
-            <td>
-                <select name="d_id" id="department">
-                    <option value="">--请选择--</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
             <td>职位:</td>
             <td><input name="p_name" value="${requestScope.position.p_name}"></td>
         </tr>
@@ -99,8 +71,11 @@
             <td></td>
         </tr>
         <tr>
-            <td><input hidden name="p_id" value="${requestScope.position.p_id}"></td>
-            <td><input type="submit" value="修改"></td>
+            <td>
+                <input hidden name="d_id" value="${requestScope.position.d_id}">
+                <input hidden name="p_id" value="${requestScope.position.p_id}">
+            </td>
+            <td><input class="layui-btn layui-btn-sm" type="submit" value="修改"></td>
         </tr>
     </table>
 </form>

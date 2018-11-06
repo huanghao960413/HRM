@@ -28,6 +28,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -81,12 +83,12 @@
                         <td><input type="text" name="t_address"></td>
                     </tr>
                     <tr>
-                        <td style="color: red">${requestScope.msg}</td>
                         <td></td>
+                        <td style="color: red">${requestScope.msg}</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="新增"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="新增"></td>
                     </tr>
                 </table>
             </form>

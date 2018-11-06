@@ -29,7 +29,18 @@
         DELETE FROM T_REWARD_PUNISH WHERE RP_ID=#{rp_id}
     </delete>
     <select id="queryRewardPunish" resultType="RewardPunish">
-        SELECT * FROM T_REWARD_PUNISH WHERE RP_ID=#{rp_id}
+        SELECT * FROM T_REWARD_PUNISH
+        <where>
+            <if test="rp_id!=null">
+                AND RP_ID=#{rp_id}
+            </if>
+            <if test="s_id!=null">
+                AND S_ID=#{s_id}
+            </if>
+            <if test="rp_date!=null">
+                AND RP_DATE=#{rp_date}
+            </if>
+        </where>
     </select>
     <select id="queryRewardPunishList" resultType="RewardPunish">
         SELECT * FROM T_REWARD_PUNISH

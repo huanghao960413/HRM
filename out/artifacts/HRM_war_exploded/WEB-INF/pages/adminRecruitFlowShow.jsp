@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -62,24 +64,23 @@
                         <table cellspacing="0px">
                             <tr>
                                 <td>${requestScope.resumeList[loop.count-1].r_name}</td>
-                                <td></td>
-                                <td style="text-align: right">${f.rf_consult==0?"未阅":"已阅"}</td>
-                            </tr>
-                            <tr>
-                                <td><a href="adminResumeShow?rf_id=${f.rf_id}">查看简历</a></td>
-                                <td></td>
+                                <td>&nbsp;&nbsp;</td>
+                                <td>${f.rf_consult==0?"未阅":"已阅"}</td>
+                                <td>&nbsp;&nbsp;</td>
+                                <td><a class="layui-btn layui-btn-sm" href="adminResumeShow?rf_id=${f.rf_id}">查看简历</a></td>
+                                <td>&nbsp;&nbsp;</td>
                                 <td style="text-align: right">
                                     <c:if test="${f.rf_state>-1 && f.rf_state<3}">
                                         <c:if test="${f.rf_state==0}">
-                                            <a href="adminRecruitFlowInterview?rf_id=${f.rf_id}">邀请面试</a>/
+                                            <a class="layui-btn layui-btn-sm" href="adminRecruitFlowInterview?rf_id=${f.rf_id}">邀请面试</a>
                                         </c:if>
                                         <c:if test="${f.rf_state==1}">
                                             <a>等待面试</a>/
                                         </c:if>
                                         <c:if test="${f.rf_state==2}">
-                                            <a href="adminRecruitFlowEmploy?rf_id=${f.rf_id}">录用</a>/
+                                            <a class="layui-btn layui-btn-sm" href="adminRecruitFlowEmploy?rf_id=${f.rf_id}">录用</a>
                                         </c:if>
-                                        <a href="adminRecruitFlowEliminate?rf_id=${f.rf_id}">淘汰</a>
+                                        <a class="layui-btn layui-btn-sm" href="adminRecruitFlowEliminate?rf_id=${f.rf_id}">淘汰</a>
                                     </c:if>
                                     <c:if test="${f.rf_state==-1}">
                                         <a style="color: red">已淘汰</a>

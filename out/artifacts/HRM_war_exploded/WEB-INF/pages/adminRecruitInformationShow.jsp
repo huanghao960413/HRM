@@ -27,6 +27,8 @@
             <li class="layui-nav-item"><a href="adminRecruitInformationShow">招聘管理</a></li>
             <li class="layui-nav-item"><a href="adminStaffShow">员工管理</a></li>
             <li class="layui-nav-item"><a href="adminTrainShow">培训管理</a></li>
+            <li class="layui-nav-item"><a href="adminRewardPunishShow">奖惩管理</a></li>
+            <li class="layui-nav-item"><a href="adminWageShow">薪资管理</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -74,8 +76,8 @@
                                 <td></td>
                                 <td>${i.ri_number}人</td>
                                 <td style="text-align: right">
-                                    <a href="adminRecruitInformationUpdate?ri_id=${i.ri_id}">修改</a>/
-                                    <a href="adminRecruitInformationDel?ri_id=${i.ri_id}">删除</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminRecruitInformationUpdate?ri_id=${i.ri_id}">修改</a>
+                                    <a class="layui-btn layui-btn-sm" href="adminRecruitInformationDel?ri_id=${i.ri_id}">删除</a>
                                 </td>
                             </tr>
                         </table>

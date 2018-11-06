@@ -138,7 +138,7 @@
                     </tr>
                     <tr>
                         <td><input type="hidden" name="rf_id" value="${requestScope.rf_id}"></td>
-                        <td><input type="submit" value="面试邀请"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="邀请"></td>
                     </tr>
                 </table>
             </form>

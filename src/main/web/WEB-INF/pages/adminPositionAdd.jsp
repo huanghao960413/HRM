@@ -93,12 +93,12 @@
                         <td><input type="text" name="p_name"></td>
                     </tr>
                     <tr>
-                        <td style="color: red">${requestScope.msg}</td>
                         <td></td>
+                        <td style="color: red">${requestScope.msg}</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="新增"></td>
+                        <td><input class="layui-btn layui-btn-sm" type="submit" value="新增"></td>
                     </tr>
                 </table>
             </form>

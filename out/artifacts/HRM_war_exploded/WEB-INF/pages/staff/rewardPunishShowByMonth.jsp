@@ -34,8 +34,9 @@
             <li class="layui-nav-item"><a href="staff/staffShow">通讯录</a></li>
             <li class="layui-nav-item"><a href="staff/trainRecordShow">员工培训</a></li>
             <li class="layui-nav-item"><a href="staff/rewardPunishShow">奖惩记录</a></li>
-            <li class="layui-nav-item"><a href="">上月薪资</a></li>
-            <li class="layui-nav-item"><a class="layui-btn layui-btn-sm" href="staff/attendanceAdd" onclick="return add()">打卡</a></li>
+            <li class="layui-nav-item"><a href="staff/wageShow">员工薪资</a></li>
+            <li class="layui-nav-item"><a class="layui-btn layui-btn-sm" href="staff/attendanceAdd"
+                                          onclick="return add()">打卡</a></li>
         </ul>
 
         <ul class="layui-nav layui-layout-right">
@@ -76,8 +77,6 @@
                         <td>金额</td>
                         <td>&nbsp;&nbsp;</td>
                         <td>状态</td>
-                        <td>&nbsp;&nbsp;</td>
-                        <td>操作</td>
                     </tr>
                     <c:forEach items="${requestScope.rewardPunishList}" var="rp">
                         <tr>
@@ -88,8 +87,6 @@
                             <td>${rp.rp_money}</td>
                             <td>&nbsp;&nbsp;</td>
                             <td>${rp.rp_state==0?"惩罚":"奖励"}</td>
-                            <td>&nbsp;&nbsp;</td>
-                            <td style="text-align: right"><a class="layui-btn layui-btn-sm" href="">删除</a></td>
                         </tr>
                     </c:forEach>
                 </table>
